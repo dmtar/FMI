@@ -1,0 +1,31 @@
+<!ELEMENT Flights (Flight,Aircraft,AirportInfo)>
+<!ELEMENT Flight (Date,FlightNumber, DepTime, ArrvTime, Status, Airline, GroundOp,Aircraft,AirportInfo)>
+<!ELEMENT Date (#PCDATA)>
+<!ELEMENT FlightNumber (#PCDATA)>
+<!ELEMENT DepTime (#PCDATA)>
+<!ELEMENT ArrvTime (#PCDATA)>
+<!ELEMENT Status (#PCDATA)>
+<!ELEMENT Airline (#PCDATA)>
+<!ELEMENT GroundOp (#PCDATA)>
+<!ELEMENT Aircraft (Description,FirstDate,Length,Height,Wingspan,Diameter,Speed,Manufacturer)>
+  <!ATTLIST Aircraft Type CDATA #REQUIRED >
+  <!ATTLIST Aircraft Capacity CDATA #REQUIRED >
+  <!ATTLIST Aircraft Engines CDATA #REQUIRED >
+  <!ELEMENT Description (#PCDATA)>
+  <!ELEMENT FirstDate (#PCDATA)>
+  <!ELEMENT Length (#PCDATA)>
+  <!ELEMENT Height (#PCDATA)>
+  <!ELEMENT Wingspan (#PCDATA)>
+  <!ELEMENT Diameter (#PCDATA)>
+  <!ELEMENT Speed (#PCDATA)>
+  <!ELEMENT Manufacturer (#PCDATA)>
+<!ELEMENT AirportInfo (Code,Phone,City,Street,Postalcode,Website)>
+  <!ATTLIST AirportInfo airport (departure | arrival) #REQUIRED >
+  <!ELEMENT Code (#PCDATA) >
+  <!ELEMENT Phone (#PCDATA) >
+    <!ATTLIST Phone type (station | mobile) #REQUIRED >
+    <!ATTLIST Phone fax (yes | no) #REQUIRED >
+  <!ELEMENT City (#PCDATA) >
+  <!ELEMENT Street (#PCDATA) >
+  <!ELEMENT Postalcode (#PCDATA) >
+  <!ELEMENT Website (#PCDATA) >

@@ -1,0 +1,22 @@
+func main() {
+	text := `MarkdownParser
+===================
+
+В тази задача ще се наложи да парсваме [markdown](http://daringfireball.net/projects/markdown/) документи. За целта ще ви
+предоставим статия, написана на markdown, от която вие трябва да извлечете
+заглавия, линкове, имена и друга основни за статията неща.
+
+
+type MarkdownParser
+-------------------
+
+`
+
+	test := NewMarkdownParser(text)
+	fmt.Println(test.Headers())
+	fmt.Println(test.SubHeadersOf(`MarkdownParser1`))
+	/*for _, v := range test.PhoneNumbers() {
+		fmt.Println(v)
+	}
+	*/
+}

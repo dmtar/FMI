@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Flights SYSTEM "flights.dtd">
+<Flights>
+    <Flight>
+        <Date></Date>
+        <FlightNumber></FlightNumber>
+        <DepTime></DepTime>
+        <ArrvTime></ArrvTime>
+        <Status></Status>
+        <Airline></Airline>
+        <GroundOp></GroundOp>
+        <Aircraft Type="" Capacity="" Engines="">
+            <Description></Description>
+            <FirstDate></FirstDate>
+            <Length></Length>
+            <Height></Height>
+            <Wingspan></Wingspan>
+            <Diameter></Diameter>
+            <Speed></Speed>
+            <Manufacturer></Manufacturer>
+        </Aircraft>
+        <AirportInfo airport="">
+            <Code></Code>
+            <Phone type="" fax=""></Phone>
+            <City></City>
+            <Street></Street>
+            <Postalcode></Postalcode>
+            <Website></Website>
+        </AirportInfo>
+    </Flight>
+    <Aircraft Type="" Capacity="" Engines="">
+        <Description></Description>
+        <FirstDate></FirstDate>
+        <Length></Length>
+        <Height></Height>
+        <Wingspan></Wingspan>
+        <Diameter></Diameter>
+        <Speed></Speed>
+        <Manufacturer></Manufacturer>
+    </Aircraft>
+    <AirportInfo airport="">
+        <Code></Code>
+        <Phone type="" fax=""></Phone>
+        <City></City>
+        <Street></Street>
+        <Postalcode></Postalcode>
+        <Website></Website>
+    </AirportInfo>
+</Flights>
