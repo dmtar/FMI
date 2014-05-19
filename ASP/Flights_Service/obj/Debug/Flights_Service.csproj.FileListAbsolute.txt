@@ -1,0 +1,4 @@
+C:\Users\Dimitar\git\ASP\Flights_Service\bin\Flights_Service.dll
+C:\Users\Dimitar\git\ASP\Flights_Service\bin\Flights_Service.pdb
+C:\Users\Dimitar\git\ASP\Flights_Service\obj\Debug\Flights_Service.dll
+C:\Users\Dimitar\git\ASP\Flights_Service\obj\Debug\Flights_Service.pdb
