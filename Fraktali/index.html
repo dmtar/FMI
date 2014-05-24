@@ -1,0 +1,97 @@
+<html>
+
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <style type="text/css">
+    canvas {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        width: 500px;
+    }
+    p {
+        text-align:center;
+    }
+    </style>
+    <script type="text/javascript">
+    $(document).ready(function() {
+
+        var MAX_DEPTH = 8;
+        var h = 420;
+        var w = 500;
+        var level = 1;
+        var drawingCanvas = document.getElementById("canvas_area");
+        var context = drawingCanvas.getContext("2d");
+        $('#level').on('keyup', function(event) {
+            event.preventDefault();
+            level = parseInt($(this).val());
+            $(this).val('');
+            if(level<=8)
+                tripinski(level, context, h, w);
+        });
+        tripinski(level, context, h, w);
+    });
+
+    function tripinski(level, context, h, w) {
+        //first triangle
+        var xa = w / 2;
+        var ya = 0;
+        var xb = 0;
+        var yb = h;
+        var xc = w;
+        var yc = h;
+        draw_triangle(context, xa, ya, xb, yb, xc, yc, "#000");
+        var top = h / 2;
+        var left = w / 4;
+        triangle(level, context, h / 2, w / 2, top, left);
+    }
+
+    function triangle(level, context, h, w, top, left) {
+        var xa = left;
+        var ya = top;
+        var xb = left + w;
+        var yb = top;
+        var xc = left + (w / 2);
+        var yc = top + h;
+
+
+        if (level > 1) {
+
+            draw_triangle(context, xa, ya, xb, yb, xc, yc, "#fff");
+
+            var new_h = h / 2;
+            var new_w = w / 2;
+            var top_1 = top + new_h;
+            var left_1 = left - (new_w / 2);
+            var top_2 = top - new_h;
+            var left_2 = left + (new_w / 2);
+            var top_3 = top + new_h;
+            var left_3 = left + w - (new_w / 2);
+            level--;
+            triangle(level, context, new_h, new_w, top_1, left_1);
+            triangle(level, context, new_h, new_w, top_2, left_2);
+            triangle(level, context, new_h, new_w, top_3, left_3);
+        }
+    }
+
+    function draw_triangle(context, xa, ya, xb, yb, xc, yc, color) {
+        context.beginPath();
+        context.moveTo(xa, ya);
+        context.lineTo(xb, yb);
+        context.lineTo(xc, yc);
+        context.lineTo(xa, ya);
+        context.closePath();
+        context.fillStyle = color;
+        context.fill();
+    }
+    </script>
+</head>
+
+<body>
+    <canvas id="canvas_area" height="420" width="500"></canvas>
+    <p>Level: <input id="level" type="text" style="width: 20px;"/><p>
+</body>
+
+</html>
