@@ -1,0 +1,57 @@
+<!ELEMENT Flight (FlightID,Date,FlightNumber, DepTime, ArrvTime, Status, GroundOp, Airline, Aircraft, AirportInfo)>
+<!ELEMENT FlightID (#PCDATA)>
+<!ELEMENT Date (#PCDATA)>
+<!ELEMENT FlightNumber (#PCDATA)>
+<!ELEMENT DepTime (#PCDATA)>
+<!ELEMENT ArrvTime (#PCDATA)>
+<!ELEMENT Status (#PCDATA)>
+<!ELEMENT GroundOp (#PCDATA)>
+<!ELEMENT Airline (AirlineID, Name, AirlineCountry, Phone, Website)>
+    <!ELEMENT AirlineID (#PCDATA) >
+    <!ELEMENT Name (#PCDATA) >
+    <!ELEMENT AirlineCountry (#PCDATA) >
+    <!ELEMENT Phone (#PCDATA) >
+    <!ELEMENT Website (#PCDATA) >
+        <!ATTLIST Website onlineCheckIN (да | не) #REQUIRED>
+        <!ATTLIST Website HotelBooking (да | не) #REQUIRED>
+        <!ATTLIST Website CarRental (да | не) #REQUIRED>
+<!ELEMENT Aircraft (Description, FirstDate, Length, Height, Wingspan, Diameter, Speed, Manufacturer)>
+  <!ATTLIST Aircraft Type CDATA #REQUIRED >
+  <!ATTLIST Aircraft Capacity CDATA #REQUIRED >
+  <!ATTLIST Aircraft Engines CDATA #REQUIRED >
+  <!ELEMENT AircraftID (#PCDATA) >
+  <!ELEMENT Description (#PCDATA)>
+  <!ELEMENT FirstDate (#PCDATA)>
+  <!ELEMENT Length (#PCDATA)>
+  <!ELEMENT Height (#PCDATA)>
+  <!ELEMENT Wingspan (#PCDATA)>
+  <!ELEMENT Diameter (#PCDATA)>
+  <!ELEMENT Speed (#PCDATA)>
+  <!ELEMENT Manufacturer (#PCDATA)>
+<!ELEMENT AirportInfo (AirportID, Code, AirportPhone, Address)>
+  <!ATTLIST AirportInfo Airport (излитане | кацане) #REQUIRED >
+  <!ELEMENT AirportID (#PCDATA) >
+  <!ELEMENT Code (#PCDATA) >
+  <!ELEMENT AirportPhone (#PCDATA) >
+    <!ATTLIST AirportPhone type (стационарен | мобилен) #REQUIRED >
+    <!ATTLIST AirportPhone fax (да | не) #REQUIRED >
+  <!ELEMENT Address (City, Street, Postalcode, AirportWebsite) > 
+    <!ELEMENT City (#PCDATA) >
+    <!ELEMENT Street (#PCDATA) >
+    <!ELEMENT Postalcode (#PCDATA) >
+    <!ELEMENT AirportWebsite (#PCDATA) >
+<!ELEMENT Aircrew (AircrewID, Member)>
+    <!ELEMENT AircrewID (#PCDATA)>
+    <!ELEMENT Member (MemberName, Country, Age, Years)>
+        <!ATTLIST Member Position (пилот | стюардеса) #REQUIRED >
+        <!ELEMENT MemberName (#PCDATA) >
+        <!ELEMENT Country (#PCDATA) >
+        <!ELEMENT Age (#PCDATA) >
+        <!ELEMENT Years (#PCDATA) >    
+<!ELEMENT TouristInfo (InfoID, Town, Timezone, Currency, AverageTemperature, CityDescription) >
+    <!ELEMENT InfoID (#PCDATA)>
+    <!ELEMENT Town (#PCDATA) >
+    <!ELEMENT Timezone (#PCDATA) >
+    <!ELEMENT Currency (#PCDATA) >
+    <!ELEMENT AverageTemperature (#PCDATA) >
+    <!ELEMENT CityDescription (#PCDATA) >
