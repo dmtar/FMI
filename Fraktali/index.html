@@ -29,12 +29,12 @@
             level = parseInt($(this).val());
             $(this).val('');
             if(level<=8)
-                tripinski(level, context, h, w);
+                sierpinski(level, context, h, w);
         });
-        tripinski(level, context, h, w);
+        sierpinski(level, context, h, w);
     });
 
-    function tripinski(level, context, h, w) {
+    function sierpinski(level, context, h, w) {
         //first triangle
         var xa = w / 2;
         var ya = 0;
