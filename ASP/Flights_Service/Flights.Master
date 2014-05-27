@@ -8,6 +8,19 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
+    <form id="form1" runat="server">
+       <div style="float:left;margin-left: 100px">
+            <h1>
+                ASP Програмиране
+            </h1>
+            <h2>
+                доц. д-р Павел Павлов
+            </h2>
+            <h2>
+                Димитър Дишев
+            </h2>
+        </div>
+    </form>
     <div style="clear:left; padding-top:30px">
         <asp:ContentPlaceHolder ID="body" runat="server" >
         </asp:ContentPlaceHolder>

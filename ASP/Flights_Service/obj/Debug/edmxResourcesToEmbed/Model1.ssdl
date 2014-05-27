@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FlightsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="FlightsModelStoreContainer">
+    <EntitySet Name="Aircraft" EntityType="FlightsModel.Store.Aircraft" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Aircrew" EntityType="FlightsModel.Store.Aircrew" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Airline" EntityType="FlightsModel.Store.Airline" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AirportInfo" EntityType="FlightsModel.Store.AirportInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Flight" EntityType="FlightsModel.Store.Flight" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Member" EntityType="FlightsModel.Store.Member" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="FlightsModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TouristInfo" EntityType="FlightsModel.Store.TouristInfo" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Flight_Aircraft" Association="FlightsModel.Store.FK_Flight_Aircraft">
+      <End Role="Aircraft" EntitySet="Aircraft" />
+      <End Role="Flight" EntitySet="Flight" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flight_Airline" Association="FlightsModel.Store.FK_Flight_Airline">
+      <End Role="Airline" EntitySet="Airline" />
+      <End Role="Flight" EntitySet="Flight" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Aircraft">
+    <Key>
+      <PropertyRef Name="AircraftID" />
+    </Key>
+    <Property Name="AircraftID" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" Nullable="false" />
+    <Property Name="FirstDate" Type="datetime" Nullable="false" />
+    <Property Name="Length" Type="decimal" Nullable="false" />
+    <Property Name="Height" Type="decimal" Nullable="false" />
+    <Property Name="Wingspan" Type="decimal" Nullable="false" />
+    <Property Name="Diameter" Type="decimal" Nullable="false" />
+    <Property Name="Speed" Type="decimal" Nullable="false" />
+    <Property Name="Manufacturer" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Aircrew">
+    <Key>
+      <PropertyRef Name="AircrewID" />
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="AircrewID" Type="int" Nullable="false" />
+    <Property Name="MemberID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Airline">
+    <Key>
+      <PropertyRef Name="AirlineID" />
+    </Key>
+    <Property Name="AirlineID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="AirlineCountry" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Phone" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Website" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="OnlineCheckIN" Type="smallint" Nullable="false" />
+    <Property Name="HotelBooking" Type="smallint" Nullable="false" />
+    <Property Name="CarRental" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AirportInfo">
+    <Key>
+      <PropertyRef Name="AirportID" />
+    </Key>
+    <Property Name="AirportID" Type="int" Nullable="false" />
+    <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="AirportPhone" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="type" Type="smallint" Nullable="false" />
+    <Property Name="fax" Type="smallint" Nullable="false" />
+    <Property Name="City" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Street" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Postalcode" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="AirportWebsite" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Flight">
+    <Key>
+      <PropertyRef Name="FlightID" />
+    </Key>
+    <Property Name="FlightID" Type="int" Nullable="false" />
+    <Property Name="AirlineID" Type="int" Nullable="false" />
+    <Property Name="AircraftID" Type="int" Nullable="false" />
+    <Property Name="AircrewID" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="FlightNumber" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="DepTime" Type="datetime" Nullable="false" />
+    <Property Name="ArrvTime" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="GroundOp" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="MemberID" Type="int" Nullable="false" />
+    <Property Name="MemberName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Position" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Country" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="Years" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TouristInfo">
+    <Key>
+      <PropertyRef Name="InfoID" />
+    </Key>
+    <Property Name="InfoID" Type="int" Nullable="false" />
+    <Property Name="Town" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Timezone" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Currency" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="AverageTemperature" Type="decimal" Nullable="false" />
+    <Property Name="CityDescription" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Flight_Aircraft">
+    <End Role="Aircraft" Type="FlightsModel.Store.Aircraft" Multiplicity="1" />
+    <End Role="Flight" Type="FlightsModel.Store.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aircraft">
+        <PropertyRef Name="AircraftID" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="AircraftID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flight_Airline">
+    <End Role="Airline" Type="FlightsModel.Store.Airline" Multiplicity="1" />
+    <End Role="Flight" Type="FlightsModel.Store.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Airline">
+        <PropertyRef Name="AirlineID" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="AirlineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
