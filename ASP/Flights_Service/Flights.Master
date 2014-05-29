@@ -20,11 +20,11 @@
                 Димитър Дишев
             </h2>
         </div>
-    </form>
     <div style="clear:left; padding-top:30px">
         <asp:ContentPlaceHolder ID="body" runat="server" >
         </asp:ContentPlaceHolder>
     </div>
+  </form>
 </body>
 </html>
 
