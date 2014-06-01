@@ -80,6 +80,11 @@
     <Compile Include="FlightControl.ascx.designer.cs">
       <DependentUpon>FlightControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="FlightEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FlightEntities.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Flights.Master.cs">
       <DependentUpon>Flights.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -109,6 +114,10 @@
   <ItemGroup />
   <ItemGroup>
     <None Include="App_Data\Flights.dtd" />
+    <EntityDeploy Include="FlightEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FlightEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

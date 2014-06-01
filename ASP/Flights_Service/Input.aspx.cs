@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text.RegularExpressions;
+using System.IO;
 
 namespace Flights_Service
 {
@@ -12,6 +14,48 @@ namespace Flights_Service
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void ValidateFlightID(object source, ServerValidateEventArgs args)
+        {
+            string input = args.Value;
+            int FlightID;
+            if (int.TryParse(input, out FlightID))
+            {
+                FlightsEntities context = new FlightsEntities();
+                var flightsIDs =
+                    from flight in context.Flights
+                    select flight.FlightID;
+                if (!flightsIDs.Any(flight => flight == FlightID))
+                    args.IsValid = true;
+                else
+                {
+                    CustomValidatorFlightID.ErrorMessage = "* Съществуващо ID";
+                    args.IsValid = false;
+                }
+            }
+            else
+            {
+                CustomValidatorFlightID.ErrorMessage = "* Невалидно ID";
+                args.IsValid = false;
+            }
+
+        }
+        protected void valDateRange_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            DateTime minDate = DateTime.Parse("1000/12/28");
+            DateTime maxDate = DateTime.Parse("9999/12/28");
+            DateTime dt;
+
+            args.IsValid = (DateTime.TryParse(args.Value, out dt)
+                            && dt <= maxDate
+                            && dt >= minDate);
+        }
+
+        protected void BtnSubmit_Click(object sender, EventArgs e)
+        {
+           
+            
         }
     }
 }

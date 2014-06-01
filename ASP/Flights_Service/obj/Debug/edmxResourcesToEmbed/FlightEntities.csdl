@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FlightsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="FlightsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Aircraft" EntityType="FlightsModel.Aircraft" />
+    <EntitySet Name="Airlines" EntityType="FlightsModel.Airline" />
+    <EntitySet Name="AirportInfoes" EntityType="FlightsModel.AirportInfo" />
+    <EntitySet Name="Flights" EntityType="FlightsModel.Flight" />
+    <EntitySet Name="Members" EntityType="FlightsModel.Member" />
+    <EntitySet Name="sysdiagrams" EntityType="FlightsModel.sysdiagram" />
+    <AssociationSet Name="FK_Flight_Aircraft" Association="FlightsModel.FK_Flight_Aircraft">
+      <End Role="Aircraft" EntitySet="Aircraft" />
+      <End Role="Flight" EntitySet="Flights" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flight_Airline" Association="FlightsModel.FK_Flight_Airline">
+      <End Role="Airline" EntitySet="Airlines" />
+      <End Role="Flight" EntitySet="Flights" />
+    </AssociationSet>
+    <AssociationSet Name="Flights2Airports" Association="FlightsModel.Flights2Airports">
+      <End Role="AirportInfo" EntitySet="AirportInfoes" />
+      <End Role="Flight" EntitySet="Flights" />
+    </AssociationSet>
+    <AssociationSet Name="Flights2Members" Association="FlightsModel.Flights2Members">
+      <End Role="Flight" EntitySet="Flights" />
+      <End Role="Member" EntitySet="Members" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Aircraft">
+    <Key>
+      <PropertyRef Name="AircraftID" />
+    </Key>
+    <Property Name="AircraftID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="FirstDate" Type="DateTime" Nullable="false" />
+    <Property Name="Length" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Height" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Wingspan" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Diameter" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Speed" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Manufacturer" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Capacity" Type="Int16" Nullable="false" />
+    <Property Name="Engines" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="Flights" Relationship="FlightsModel.FK_Flight_Aircraft" FromRole="Aircraft" ToRole="Flight" />
+  </EntityType>
+  <EntityType Name="Airline">
+    <Key>
+      <PropertyRef Name="AirlineID" />
+    </Key>
+    <Property Name="AirlineID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="AirlineCountry" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Website" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="OnlineCheckIN" Type="Boolean" Nullable="false" />
+    <Property Name="HotelBooking" Type="Boolean" Nullable="false" />
+    <Property Name="CarRental" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Flights" Relationship="FlightsModel.FK_Flight_Airline" FromRole="Airline" ToRole="Flight" />
+  </EntityType>
+  <EntityType Name="AirportInfo">
+    <Key>
+      <PropertyRef Name="AirportID" />
+    </Key>
+    <Property Name="AirportID" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="AirportPhone" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Fax" Type="Boolean" Nullable="false" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Street" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Postalcode" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="AirportWebsite" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Airport" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Flights" Relationship="FlightsModel.Flights2Airports" FromRole="AirportInfo" ToRole="Flight" />
+  </EntityType>
+  <EntityType Name="Flight">
+    <Key>
+      <PropertyRef Name="FlightID" />
+    </Key>
+    <Property Name="FlightID" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <Property Name="FlightNumber" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="DepTime" Type="DateTime" Nullable="false" />
+    <Property Name="ArrvTime" Type="DateTime" Nullable="false" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="GroundOp" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="AirlineID" Type="Int32" Nullable="false" />
+    <Property Name="AircraftID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Aircraft" Relationship="FlightsModel.FK_Flight_Aircraft" FromRole="Flight" ToRole="Aircraft" />
+    <NavigationProperty Name="Airline" Relationship="FlightsModel.FK_Flight_Airline" FromRole="Flight" ToRole="Airline" />
+    <NavigationProperty Name="AirportInfoes" Relationship="FlightsModel.Flights2Airports" FromRole="Flight" ToRole="AirportInfo" />
+    <NavigationProperty Name="Members" Relationship="FlightsModel.Flights2Members" FromRole="Flight" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="MemberID" Type="Int32" Nullable="false" />
+    <Property Name="MemberName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Position" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Country" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Age" Type="Int32" Nullable="false" />
+    <Property Name="Years" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Flights" Relationship="FlightsModel.Flights2Members" FromRole="Member" ToRole="Flight" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Flight_Aircraft">
+    <End Role="Aircraft" Type="FlightsModel.Aircraft" Multiplicity="1" />
+    <End Role="Flight" Type="FlightsModel.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aircraft">
+        <PropertyRef Name="AircraftID" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="AircraftID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flight_Airline">
+    <End Role="Airline" Type="FlightsModel.Airline" Multiplicity="1" />
+    <End Role="Flight" Type="FlightsModel.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Airline">
+        <PropertyRef Name="AirlineID" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="AirlineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Flights2Airports">
+    <End Role="AirportInfo" Type="FlightsModel.AirportInfo" Multiplicity="*" />
+    <End Role="Flight" Type="FlightsModel.Flight" Multiplicity="*" />
+  </Association>
+  <Association Name="Flights2Members">
+    <End Role="Flight" Type="FlightsModel.Flight" Multiplicity="*" />
+    <End Role="Member" Type="FlightsModel.Member" Multiplicity="*" />
+  </Association>
+</Schema>

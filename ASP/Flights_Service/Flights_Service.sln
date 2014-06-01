@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flights_Service", "Flights_Service.csproj", "{FEB34610-4725-481E-9E85-B4C3428F0EED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicsDemo", "..\..\..\..\Documents\BasicsDemo\BasicsDemo\BasicsDemo\BasicsDemo.csproj", "{3123B509-7FAB-478F-8423-2E0162F3864E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FEB34610-4725-481E-9E85-B4C3428F0EED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEB34610-4725-481E-9E85-B4C3428F0EED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEB34610-4725-481E-9E85-B4C3428F0EED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEB34610-4725-481E-9E85-B4C3428F0EED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3123B509-7FAB-478F-8423-2E0162F3864E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3123B509-7FAB-478F-8423-2E0162F3864E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3123B509-7FAB-478F-8423-2E0162F3864E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3123B509-7FAB-478F-8423-2E0162F3864E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
