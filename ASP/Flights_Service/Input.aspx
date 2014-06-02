@@ -52,6 +52,36 @@
                         ErrorMessage="Въведете коректна дата" />
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="FlightNumberLabel" runat="server" AssociatedControlID="NumberInput">Номер на полета: *</asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox runat="server" ID="NumberInput" />
+                    <asp:RequiredFieldValidator 
+                        ID="RequiredFieldValidator3" 
+                        ErrorMessage="* Задължително поле" 
+                        ControlToValidate="NumberInput"
+                        ForeColor="Red" 
+                        Display="Dynamic" 
+                        runat="server" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="DeptTimeLabel" runat="server" AssociatedControlID="DeptTime">Час на излитане: *</asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox runat="server" ID="DeptTime" />
+                    <asp:RequiredFieldValidator 
+                        ID="RequiredFieldValidator4" 
+                        ErrorMessage="* Задължително поле" 
+                        ControlToValidate="DeptTime"
+                        ForeColor="Red" 
+                        Display="Dynamic" 
+                        runat="server" />
+                </td>
+            </tr>
         </table>
         </fieldset>
         <fieldset>

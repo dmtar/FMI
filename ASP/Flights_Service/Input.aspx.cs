@@ -15,7 +15,6 @@ namespace Flights_Service
         {
 
         }
-
         protected void ValidateFlightID(object source, ServerValidateEventArgs args)
         {
             string input = args.Value;
@@ -51,11 +50,27 @@ namespace Flights_Service
                             && dt <= maxDate
                             && dt >= minDate);
         }
+        protected void IsValidTime_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            string thetime = args.Value;
+            Regex checktime =
+                new Regex(@"^(20|21|22|23|[01]d|d)(([:][0-5]d){1,2})$");
 
-        protected void BtnSubmit_Click(object sender, EventArgs e)
+            if (checktime.IsMatch(thetime))
+            {
+                args.IsValid = true;
+            }
+            else
+            {
+                args.IsValid = false;
+            }
+
+        }
+        protected void BtnSubmit_Click(object source, System.EventArgs args)
         {
            
             
         }
+
     }
 }
