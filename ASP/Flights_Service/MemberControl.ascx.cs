@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Flights_Service
 {
-    public partial class FlightControl : System.Web.UI.UserControl
+    public partial class MemberControl : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {

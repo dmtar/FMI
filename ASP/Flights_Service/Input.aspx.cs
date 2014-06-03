@@ -15,6 +15,48 @@ namespace Flights_Service
         {
 
         }
+
+        protected void btnAddAirport_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+
+        protected void btnAddMember_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void ValidateEngines(object source, ServerValidateEventArgs args)
+        {
+            //TODO: check the input number, engines should be more than 0 and less than 6.
+            args.IsValid = true;
+        }
+
+        protected void ValidateCapacity(object source, ServerValidateEventArgs args)
+        {
+            //TODO: check the input number, capacity is between 0 and 550.
+            args.IsValid = true;
+        }
+
+        protected void ValidateDecimal(object source, ServerValidateEventArgs args)
+        {
+            //TODO: check the input number.
+            args.IsValid = true;
+        }
+
+        protected void ValidateAirlineID(object source, ServerValidateEventArgs args)
+        {
+            //TODO: check the ID.
+            args.IsValid = true;
+        }
+
+        protected void ValidateAircraftID(object source, ServerValidateEventArgs args)
+        {
+            //TODO: check the ID.
+            args.IsValid = true;
+        }
+
         protected void ValidateFlightID(object source, ServerValidateEventArgs args)
         {
             string input = args.Value;
@@ -40,6 +82,7 @@ namespace Flights_Service
             }
 
         }
+
         protected void valDateRange_ServerValidate(object source, ServerValidateEventArgs args)
         {
             DateTime minDate = DateTime.Parse("1000/12/28");
@@ -50,7 +93,8 @@ namespace Flights_Service
                             && dt <= maxDate
                             && dt >= minDate);
         }
-        protected void IsValidTime_ServerValidate(object source, ServerValidateEventArgs args)
+
+        protected void ValidateTime(object source, ServerValidateEventArgs args)
         {
             string thetime = args.Value;
             Regex checktime =
@@ -66,10 +110,10 @@ namespace Flights_Service
             }
 
         }
+
         protected void BtnSubmit_Click(object source, System.EventArgs args)
         {
-           
-            
+            //TODO: export the form data to the database.
         }
 
     }

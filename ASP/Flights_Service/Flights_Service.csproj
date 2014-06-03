@@ -53,9 +53,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AirportControl.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="FlightControl.ascx" />
     <Content Include="Input.aspx" />
+    <Content Include="MemberControl.ascx" />
     <Content Include="Process.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -66,6 +68,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AirportControl.ascx.cs">
+      <DependentUpon>AirportControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AirportControl.ascx.designer.cs">
+      <DependentUpon>AirportControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -98,6 +107,13 @@
     </Compile>
     <Compile Include="Input.aspx.designer.cs">
       <DependentUpon>Input.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MemberControl.ascx.cs">
+      <DependentUpon>MemberControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MemberControl.ascx.designer.cs">
+      <DependentUpon>MemberControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Process.aspx.cs">
       <DependentUpon>Process.aspx</DependentUpon>
