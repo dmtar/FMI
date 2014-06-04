@@ -55,7 +55,6 @@
   <ItemGroup>
     <Content Include="AirportControl.ascx" />
     <Content Include="Default.aspx" />
-    <Content Include="FlightControl.ascx" />
     <Content Include="Input.aspx" />
     <Content Include="MemberControl.ascx" />
     <Content Include="Process.aspx" />
@@ -81,13 +80,6 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="FlightControl.ascx.cs">
-      <DependentUpon>FlightControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FlightControl.ascx.designer.cs">
-      <DependentUpon>FlightControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="FlightEntities.Designer.cs">
       <AutoGen>True</AutoGen>

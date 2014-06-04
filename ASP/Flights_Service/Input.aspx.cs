@@ -11,6 +11,73 @@ namespace Flights_Service
 {
     public partial class Input : System.Web.UI.Page
     {
+        static int airportsCount = 1;
+        static int membersCount = 1;
+
+        private List<AirportControl> dynamicAirports;
+        private List<MemberControl> dynamicMembers;
+
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            if (this.Page.Request.Form.AllKeys.Contains("ctl00$body$btnAddAirport"))
+            {
+                airportsCount++;
+            }
+            if (this.Page.Request.Form.AllKeys.Contains("ctl00$body$btnAddMember"))
+            {
+                membersCount++;
+            }
+        }
+
+        protected override void OnInit(EventArgs e)
+        {
+            base.OnInit(e);
+            dynamicAirports = new List<AirportControl>();
+            for (int i = 0; i < airportsCount; i++)
+            {
+                AirportControl ac = LoadControl("~/AirportControl.ascx") as AirportControl;
+                ac.ID = "airport" + (i + 1).ToString();
+                dynamicAirports.Add(ac);
+                AirportPlaceHolder.Controls.Add(ac);
+
+                if (airportsCount > 1)
+                {
+                    Button button = new Button();
+                    button.ID = "rm" + (i + 1).ToString();
+                    button.Text = "Изтрий";
+                    button.Click += new EventHandler(RemoveAirport);
+                    button.CausesValidation = false;
+                    AirportPlaceHolder.Controls.Add(button);
+                }
+            }
+        }
+        protected void RemoveAirport(object sender, EventArgs e)
+        {
+            Button clicked = (Button)sender;
+            int controlCount = int.Parse(Regex.Match(clicked.ClientID, @"\d+").ToString());
+            if (controlCount != airportsCount)
+                while (true)
+                {
+                    AirportControl airport = AirportPlaceHolder.FindControl("airport" + controlCount) as AirportControl;
+                    AirportControl nextAirport = AirportPlaceHolder.FindControl("airport" + (controlCount + 1).ToString()) as AirportControl;
+                    airport.Code = nextAirport.Code;
+                    airport.AirportPhone = nextAirport.AirportPhone;
+                   
+                    controlCount++;
+                    if (controlCount == airportsCount) break;
+                }
+            Control airportControl = AirportPlaceHolder.FindControl("book" + controlCount.ToString());
+            AirportPlaceHolder.Controls.Remove(airportControl);
+            dynamicAirports.Remove(airportControl as AirportControl);
+            Control rmButton = AirportPlaceHolder.FindControl("rm" + controlCount.ToString());
+            AirportPlaceHolder.Controls.Remove(rmButton);
+            if (controlCount == 2)
+            {
+                rmButton = AirportPlaceHolder.FindControl("rm1");
+                AirportPlaceHolder.Controls.Remove(rmButton);
+            }
+            airportsCount--;
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
 

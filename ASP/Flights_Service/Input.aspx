@@ -5,7 +5,6 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID="body" runat="server" >
 <asp:LinkButton ID="LinkButton1" Text="Назад" runat="server" PostBackUrl="~/Default.aspx" CausesValidation="false" />
-<asp:ScriptManager ID="ScriptManager1" runat="server" />
 <div runat="server" id="DivForm">
         <fieldset>
         <legend>Полет</legend>
@@ -469,6 +468,7 @@
             </tr>
             </table>
         </fieldset>
+        <asp:ScriptManager ID="ScriptManager1" runat="server" />
         <fieldset>
             <legend>Летище</legend>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server" style="width: 230px">
