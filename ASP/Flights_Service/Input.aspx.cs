@@ -33,6 +33,7 @@ namespace Flights_Service
         {
             base.OnInit(e);
             dynamicAirports = new List<AirportControl>();
+            dynamicMembers = new List<MemberControl>();
             for (int i = 0; i < airportsCount; i++)
             {
                 AirportControl ac = LoadControl("~/AirportControl.ascx") as AirportControl;
@@ -43,40 +44,100 @@ namespace Flights_Service
                 if (airportsCount > 1)
                 {
                     Button button = new Button();
-                    button.ID = "rm" + (i + 1).ToString();
+                    button.ID = "removeAirport" + (i + 1).ToString();
                     button.Text = "Изтрий";
-                    button.Click += new EventHandler(RemoveAirport);
+                    button.Click += new EventHandler(Remove);
                     button.CausesValidation = false;
                     AirportPlaceHolder.Controls.Add(button);
                 }
             }
+            for (int i = 0; i < membersCount; i++)
+            {
+                MemberControl ac = LoadControl("~/MemberControl.ascx") as MemberControl;
+                ac.ID = "member" + (i + 1).ToString();
+                dynamicMembers.Add(ac);
+                MemberPlaceHolder.Controls.Add(ac);
+
+                if (membersCount > 1)
+                {
+                    Button button = new Button();
+                    button.ID = "removeMember" + (i + 1).ToString();
+                    button.Text = "Изтрий";
+                    button.Click += new EventHandler(Remove);
+                    button.CausesValidation = false;
+                    MemberPlaceHolder.Controls.Add(button);
+                }
+            }
         }
-        protected void RemoveAirport(object sender, EventArgs e)
+        protected void Remove(object sender, EventArgs e)
         {
             Button clicked = (Button)sender;
-            int controlCount = int.Parse(Regex.Match(clicked.ClientID, @"\d+").ToString());
-            if (controlCount != airportsCount)
-                while (true)
-                {
-                    AirportControl airport = AirportPlaceHolder.FindControl("airport" + controlCount) as AirportControl;
-                    AirportControl nextAirport = AirportPlaceHolder.FindControl("airport" + (controlCount + 1).ToString()) as AirportControl;
-                    airport.Code = nextAirport.Code;
-                    airport.AirportPhone = nextAirport.AirportPhone;
-                   
-                    controlCount++;
-                    if (controlCount == airportsCount) break;
-                }
-            Control airportControl = AirportPlaceHolder.FindControl("book" + controlCount.ToString());
-            AirportPlaceHolder.Controls.Remove(airportControl);
-            dynamicAirports.Remove(airportControl as AirportControl);
-            Control rmButton = AirportPlaceHolder.FindControl("rm" + controlCount.ToString());
-            AirportPlaceHolder.Controls.Remove(rmButton);
-            if (controlCount == 2)
+            bool is_airport = Regex.Match(clicked.ClientID, @"Airport").Success;
+            bool is_member = Regex.Match(clicked.ClientID, @"Member").Success;
+            if (!is_airport && !is_member)
             {
-                rmButton = AirportPlaceHolder.FindControl("rm1");
-                AirportPlaceHolder.Controls.Remove(rmButton);
+                throw new Exception();
             }
-            airportsCount--;
+            if (is_airport)
+            {
+                int controlCount = int.Parse(Regex.Match(clicked.ClientID, @"\d+").ToString());
+                if (controlCount != airportsCount)
+                    while (true)
+                    {
+                        AirportControl airport = AirportPlaceHolder.FindControl("airport" + controlCount) as AirportControl;
+                        AirportControl nextAirport = AirportPlaceHolder.FindControl("airport" + (controlCount + 1).ToString()) as AirportControl;
+                        airport.Code = nextAirport.Code;
+                        airport.AirportPhone = nextAirport.AirportPhone;
+                        airport.Type= nextAirport.Type;
+                        airport.Fax = nextAirport.Fax;
+                        airport.City = nextAirport.City;
+                        airport.Street = nextAirport.Street;
+                        airport.Postalcode = nextAirport.Postalcode;
+                        airport.AirportWebsite = nextAirport.AirportWebsite;
+                        airport.Airport = nextAirport.Airport;
+                        controlCount++;
+                        if (controlCount == airportsCount) break;
+                    }
+                Control airportControl = AirportPlaceHolder.FindControl("airport" + controlCount.ToString());
+                AirportPlaceHolder.Controls.Remove(airportControl);
+                dynamicAirports.Remove(airportControl as AirportControl);
+                Control rmButton = AirportPlaceHolder.FindControl("removeAirport" + controlCount.ToString());
+                AirportPlaceHolder.Controls.Remove(rmButton);
+                if (controlCount == 2)
+                {
+                    rmButton = AirportPlaceHolder.FindControl("removeAirport1");
+                    AirportPlaceHolder.Controls.Remove(rmButton);
+                }
+                airportsCount--;   
+            }
+            if (is_member)
+            {
+                int controlCount = int.Parse(Regex.Match(clicked.ClientID, @"\d+").ToString());
+                if (controlCount != membersCount)
+                    while (true)
+                    {
+                        MemberControl member = MemberPlaceHolder.FindControl("member" + controlCount) as MemberControl;
+                        MemberControl nextMember = MemberPlaceHolder.FindControl("member" + (controlCount + 1).ToString()) as MemberControl;
+                        member.MemberName = nextMember.MemberName;
+                        member.Position = nextMember.Position;
+                        member.Country= nextMember.Country;
+                        member.Age = nextMember.Age;
+                        member.Years = nextMember.Years;
+                        controlCount++;
+                        if (controlCount == membersCount) break;
+                    }
+                Control memberControl = MemberPlaceHolder.FindControl("member" + controlCount.ToString());
+                MemberPlaceHolder.Controls.Remove(memberControl);
+                dynamicMembers.Remove(memberControl as MemberControl);
+                Control rmButton = MemberPlaceHolder.FindControl("removeMember" + controlCount.ToString());
+                MemberPlaceHolder.Controls.Remove(rmButton);
+                if (controlCount == 2)
+                {
+                    rmButton = MemberPlaceHolder.FindControl("removeMember1");
+                    MemberPlaceHolder.Controls.Remove(rmButton);
+                }
+                membersCount--;
+            }
         }
         protected void Page_Load(object sender, EventArgs e)
         {
