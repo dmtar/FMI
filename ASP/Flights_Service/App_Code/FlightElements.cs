@@ -31,6 +31,7 @@ namespace Flights_Service.App_Code
 
         public static string FLIGHT_AIRCRAFT = "Aircraft";
         public static string FLIGHT_AIRCRAFT_AIRCRAFTID = "AircraftID";
+        public static string FLIGHT_AIRCRAFT_DESCRIPTION = "Description";
         public static string FLIGHT_AIRCRAFT_TYPE = "Type";
         public static string FLIGHT_AIRCRAFT_CAPACITY = "Capacity";
         public static string FLIGHT_AIRCRAFT_ENGINES = "Engines";

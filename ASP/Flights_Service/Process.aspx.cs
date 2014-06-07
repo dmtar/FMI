@@ -4,14 +4,82 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Flights_Service.App_Code;
+using System.IO;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Flights_Service
 {
     public partial class Process : System.Web.UI.Page
     {
+        private int filesNumber = 0;
+        private FlightsEntities context = new FlightsEntities();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                XMLProcessorLINQ processor = new XMLProcessorLINQ();
+                string[] files = Directory.GetFiles(Server.MapPath("~/App_Data"), "*.xml", SearchOption.AllDirectories);
+                foreach (string file in files)
+                {
+                    filesNumber++;
+                    try
+                    {
+                        processor.LoadFile(file);
+                        Flight bs = processor.GetFlight();
+                        var bss = from r in context.Flights
+                                  select r.FlightID;
+                        if (bss.Any(id => id == bs.FlightID))
+                        {
+                            LiteralControl lic = new LiteralControl("<p class=\"fail\">" + filesNumber + ". "
+                                + file + " - Полет с ID=" + bs.FlightID + " вече съществува в БД!</p>");
+                            PanelResults.Controls.Add(lic);
+                        }
+                        else
+                        {
+                            context.Flights.AddObject(bs);
+                            context.SaveChanges();
+                            LiteralControl lic = new LiteralControl("<p class=\"success\">" + filesNumber
+                                + ". " + file + " - Обработен успешно!</p>");
+                            PanelResults.Controls.Add(lic);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        LiteralControl lic = new LiteralControl("<p class=\"fail\">" + filesNumber + ". "
+                            + file + " - " + ex.Message + " " + ex.InnerException + "</p>");
+                        PanelResults.Controls.Add(lic);
+                    }
+                }
 
+            }
+        }
+        protected void TruncateDB(object sender, EventArgs e)
+        {
+            SqlConnection con =
+                new SqlConnection();
+            con.ConnectionString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["FlightsConnectionString"].ToString();
+            List<SqlCommand> commands = new List<SqlCommand>();
+            commands.Add(new SqlCommand(@"delete from Flights.dbo.Aircraft"));
+            commands.Add(new SqlCommand(@"delete from Flights.dbo.Airline"));
+            commands.Add(new SqlCommand(@"delete from Flights.dbo.AirportInfo"));
+            commands.Add(new SqlCommand(@"delete from Flights.dbo.Flight"));
+            commands.Add(new SqlCommand(@"delete from Flights.dbo.Member"));
+            commands.Add(new SqlCommand(@"delete from Flights.dbo.Flights2Airports"));
+            commands.Add(new SqlCommand(@"delete from Flights.dbo.Flights2Members"));
+            con.Open();
+            foreach (SqlCommand c in commands)
+            {
+                c.Connection = con;
+                c.CommandType = System.Data.CommandType.Text;
+                c.ExecuteNonQuery();
+            }
+            con.Close();
+
+            ListBox1.DataBind();
+            GridView1.DataBind();
         }
     }
 }

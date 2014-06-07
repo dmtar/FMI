@@ -39,59 +39,59 @@
       <PropertyRef Name="AircraftID" />
     </Key>
     <Property Name="AircraftID" Type="int" Nullable="false" />
-    <Property Name="Description" Type="nvarchar(max)" />
-    <Property Name="FirstDate" Type="datetime" />
-    <Property Name="Length" Type="decimal" Precision="9" Scale="2" />
-    <Property Name="Height" Type="decimal" Precision="9" Scale="2" />
-    <Property Name="Wingspan" Type="decimal" Precision="9" Scale="2" />
-    <Property Name="Diameter" Type="decimal" Precision="9" Scale="2" />
-    <Property Name="Speed" Type="decimal" Precision="9" Scale="2" />
-    <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" />
-    <Property Name="Type" Type="nvarchar" MaxLength="50" />
-    <Property Name="Capacity" Type="smallint" />
-    <Property Name="Engines" Type="tinyint" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FirstDate" Type="datetime" Nullable="false" />
+    <Property Name="Length" Type="decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Height" Type="decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Wingspan" Type="decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Diameter" Type="decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Speed" Type="decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Manufacturer" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Capacity" Type="smallint" Nullable="false" />
+    <Property Name="Engines" Type="tinyint" Nullable="false" />
   </EntityType>
   <EntityType Name="Airline">
     <Key>
       <PropertyRef Name="AirlineID" />
     </Key>
     <Property Name="AirlineID" Type="int" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" />
-    <Property Name="AirlineCountry" Type="nvarchar" MaxLength="50" />
-    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
-    <Property Name="Website" Type="nvarchar" MaxLength="50" />
-    <Property Name="OnlineCheckIN" Type="bit" />
-    <Property Name="HotelBooking" Type="bit" />
-    <Property Name="CarRental" Type="bit" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="AirlineCountry" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Website" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="OnlineCheckIN" Type="bit" Nullable="false" />
+    <Property Name="HotelBooking" Type="bit" Nullable="false" />
+    <Property Name="CarRental" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="AirportInfo">
     <Key>
       <PropertyRef Name="AirportID" />
     </Key>
     <Property Name="AirportID" Type="int" Nullable="false" />
-    <Property Name="Code" Type="nvarchar" MaxLength="50" />
-    <Property Name="AirportPhone" Type="nvarchar" MaxLength="50" />
-    <Property Name="Type" Type="nvarchar" MaxLength="50" />
-    <Property Name="Fax" Type="bit" />
-    <Property Name="City" Type="nvarchar" MaxLength="50" />
-    <Property Name="Street" Type="nvarchar" MaxLength="50" />
-    <Property Name="Postalcode" Type="nvarchar" MaxLength="50" />
-    <Property Name="AirportWebsite" Type="nvarchar" MaxLength="50" />
-    <Property Name="Airport" Type="nvarchar" MaxLength="50" />
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="AirportPhone" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Fax" Type="bit" Nullable="false" />
+    <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Street" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Postalcode" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="AirportWebsite" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Airport" Type="nvarchar" Nullable="false" MaxLength="50" />
   </EntityType>
   <EntityType Name="Flight">
     <Key>
       <PropertyRef Name="FlightID" />
     </Key>
     <Property Name="FlightID" Type="int" Nullable="false" />
-    <Property Name="Date" Type="nvarchar" MaxLength="50" />
-    <Property Name="FlightNumber" Type="nvarchar" MaxLength="50" />
-    <Property Name="DepTime" Type="nvarchar" MaxLength="50" />
-    <Property Name="ArrvTime" Type="nvarchar" MaxLength="50" />
-    <Property Name="Status" Type="nvarchar" MaxLength="50" />
-    <Property Name="GroundOp" Type="nvarchar" MaxLength="50" />
-    <Property Name="AirlineID" Type="int" />
-    <Property Name="AircraftID" Type="int" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="FlightNumber" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="DepTime" Type="datetime" Nullable="false" />
+    <Property Name="ArrvTime" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="GroundOp" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="AirlineID" Type="int" Nullable="false" />
+    <Property Name="AircraftID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Flights2Airports">
     <Key>
@@ -131,7 +131,7 @@
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <Association Name="FK_Flight_Aircraft">
-    <End Role="Aircraft" Type="FlightsModel.Store.Aircraft" Multiplicity="0..1" />
+    <End Role="Aircraft" Type="FlightsModel.Store.Aircraft" Multiplicity="1" />
     <End Role="Flight" Type="FlightsModel.Store.Flight" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Aircraft">
@@ -143,7 +143,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Flight_Airline">
-    <End Role="Airline" Type="FlightsModel.Store.Airline" Multiplicity="0..1" />
+    <End Role="Airline" Type="FlightsModel.Store.Airline" Multiplicity="1" />
     <End Role="Flight" Type="FlightsModel.Store.Flight" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Airline">

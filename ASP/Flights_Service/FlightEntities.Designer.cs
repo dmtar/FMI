@@ -19,8 +19,8 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("FlightsModel", "FK_Flight_Aircraft", "Aircraft", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Flights_Service.Aircraft), "Flight", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Flights_Service.Flight), true)]
-[assembly: EdmRelationshipAttribute("FlightsModel", "FK_Flight_Airline", "Airline", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Flights_Service.Airline), "Flight", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Flights_Service.Flight), true)]
+[assembly: EdmRelationshipAttribute("FlightsModel", "FK_Flight_Aircraft", "Aircraft", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Flights_Service.Aircraft), "Flight", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Flights_Service.Flight), true)]
+[assembly: EdmRelationshipAttribute("FlightsModel", "FK_Flight_Airline", "Airline", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Flights_Service.Airline), "Flight", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Flights_Service.Flight), true)]
 [assembly: EdmRelationshipAttribute("FlightsModel", "Flights2Airports", "AirportInfo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Flights_Service.AirportInfo), "Flight", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Flights_Service.Flight))]
 [assembly: EdmRelationshipAttribute("FlightsModel", "Flights2Members", "Flight", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Flights_Service.Flight), "Member", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Flights_Service.Member))]
 
@@ -244,32 +244,10 @@ namespace Flights_Service
         /// Create a new Aircraft object.
         /// </summary>
         /// <param name="aircraftID">Initial value of the AircraftID property.</param>
-        /// <param name="description">Initial value of the Description property.</param>
-        /// <param name="firstDate">Initial value of the FirstDate property.</param>
-        /// <param name="length">Initial value of the Length property.</param>
-        /// <param name="height">Initial value of the Height property.</param>
-        /// <param name="wingspan">Initial value of the Wingspan property.</param>
-        /// <param name="diameter">Initial value of the Diameter property.</param>
-        /// <param name="speed">Initial value of the Speed property.</param>
-        /// <param name="manufacturer">Initial value of the Manufacturer property.</param>
-        /// <param name="type">Initial value of the Type property.</param>
-        /// <param name="capacity">Initial value of the Capacity property.</param>
-        /// <param name="engines">Initial value of the Engines property.</param>
-        public static Aircraft CreateAircraft(global::System.Int32 aircraftID, global::System.String description, global::System.DateTime firstDate, global::System.Decimal length, global::System.Decimal height, global::System.Decimal wingspan, global::System.Decimal diameter, global::System.Decimal speed, global::System.String manufacturer, global::System.String type, global::System.Int16 capacity, global::System.Byte engines)
+        public static Aircraft CreateAircraft(global::System.Int32 aircraftID)
         {
             Aircraft aircraft = new Aircraft();
             aircraft.AircraftID = aircraftID;
-            aircraft.Description = description;
-            aircraft.FirstDate = firstDate;
-            aircraft.Length = length;
-            aircraft.Height = height;
-            aircraft.Wingspan = wingspan;
-            aircraft.Diameter = diameter;
-            aircraft.Speed = speed;
-            aircraft.Manufacturer = manufacturer;
-            aircraft.Type = type;
-            aircraft.Capacity = capacity;
-            aircraft.Engines = engines;
             return aircraft;
         }
 
@@ -307,7 +285,7 @@ namespace Flights_Service
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Description
         {
@@ -319,7 +297,7 @@ namespace Flights_Service
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -331,9 +309,9 @@ namespace Flights_Service
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime FirstDate
+        public Nullable<global::System.DateTime> FirstDate
         {
             get
             {
@@ -348,16 +326,16 @@ namespace Flights_Service
                 OnFirstDateChanged();
             }
         }
-        private global::System.DateTime _FirstDate;
-        partial void OnFirstDateChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _FirstDate;
+        partial void OnFirstDateChanging(Nullable<global::System.DateTime> value);
         partial void OnFirstDateChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Decimal Length
+        public Nullable<global::System.Decimal> Length
         {
             get
             {
@@ -372,16 +350,16 @@ namespace Flights_Service
                 OnLengthChanged();
             }
         }
-        private global::System.Decimal _Length;
-        partial void OnLengthChanging(global::System.Decimal value);
+        private Nullable<global::System.Decimal> _Length;
+        partial void OnLengthChanging(Nullable<global::System.Decimal> value);
         partial void OnLengthChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Decimal Height
+        public Nullable<global::System.Decimal> Height
         {
             get
             {
@@ -396,16 +374,16 @@ namespace Flights_Service
                 OnHeightChanged();
             }
         }
-        private global::System.Decimal _Height;
-        partial void OnHeightChanging(global::System.Decimal value);
+        private Nullable<global::System.Decimal> _Height;
+        partial void OnHeightChanging(Nullable<global::System.Decimal> value);
         partial void OnHeightChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Decimal Wingspan
+        public Nullable<global::System.Decimal> Wingspan
         {
             get
             {
@@ -420,16 +398,16 @@ namespace Flights_Service
                 OnWingspanChanged();
             }
         }
-        private global::System.Decimal _Wingspan;
-        partial void OnWingspanChanging(global::System.Decimal value);
+        private Nullable<global::System.Decimal> _Wingspan;
+        partial void OnWingspanChanging(Nullable<global::System.Decimal> value);
         partial void OnWingspanChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Decimal Diameter
+        public Nullable<global::System.Decimal> Diameter
         {
             get
             {
@@ -444,16 +422,16 @@ namespace Flights_Service
                 OnDiameterChanged();
             }
         }
-        private global::System.Decimal _Diameter;
-        partial void OnDiameterChanging(global::System.Decimal value);
+        private Nullable<global::System.Decimal> _Diameter;
+        partial void OnDiameterChanging(Nullable<global::System.Decimal> value);
         partial void OnDiameterChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Decimal Speed
+        public Nullable<global::System.Decimal> Speed
         {
             get
             {
@@ -468,14 +446,14 @@ namespace Flights_Service
                 OnSpeedChanged();
             }
         }
-        private global::System.Decimal _Speed;
-        partial void OnSpeedChanging(global::System.Decimal value);
+        private Nullable<global::System.Decimal> _Speed;
+        partial void OnSpeedChanging(Nullable<global::System.Decimal> value);
         partial void OnSpeedChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Manufacturer
         {
@@ -487,7 +465,7 @@ namespace Flights_Service
             {
                 OnManufacturerChanging(value);
                 ReportPropertyChanging("Manufacturer");
-                _Manufacturer = StructuralObject.SetValidValue(value, false);
+                _Manufacturer = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Manufacturer");
                 OnManufacturerChanged();
             }
@@ -499,7 +477,7 @@ namespace Flights_Service
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Type
         {
@@ -511,7 +489,7 @@ namespace Flights_Service
             {
                 OnTypeChanging(value);
                 ReportPropertyChanging("Type");
-                _Type = StructuralObject.SetValidValue(value, false);
+                _Type = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Type");
                 OnTypeChanged();
             }
@@ -523,9 +501,9 @@ namespace Flights_Service
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int16 Capacity
+        public Nullable<global::System.Int16> Capacity
         {
             get
             {
@@ -540,16 +518,16 @@ namespace Flights_Service
                 OnCapacityChanged();
             }
         }
-        private global::System.Int16 _Capacity;
-        partial void OnCapacityChanging(global::System.Int16 value);
+        private Nullable<global::System.Int16> _Capacity;
+        partial void OnCapacityChanging(Nullable<global::System.Int16> value);
         partial void OnCapacityChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Byte Engines
+        public Nullable<global::System.Byte> Engines
         {
             get
             {
@@ -564,8 +542,8 @@ namespace Flights_Service
                 OnEnginesChanged();
             }
         }
-        private global::System.Byte _Engines;
-        partial void OnEnginesChanging(global::System.Byte value);
+        private Nullable<global::System.Byte> _Engines;
+        partial void OnEnginesChanging(Nullable<global::System.Byte> value);
         partial void OnEnginesChanged();
 
         #endregion
@@ -613,24 +591,10 @@ namespace Flights_Service
         /// Create a new Airline object.
         /// </summary>
         /// <param name="airlineID">Initial value of the AirlineID property.</param>
-        /// <param name="name">Initial value of the Name property.</param>
-        /// <param name="airlineCountry">Initial value of the AirlineCountry property.</param>
-        /// <param name="phone">Initial value of the Phone property.</param>
-        /// <param name="website">Initial value of the Website property.</param>
-        /// <param name="onlineCheckIN">Initial value of the OnlineCheckIN property.</param>
-        /// <param name="hotelBooking">Initial value of the HotelBooking property.</param>
-        /// <param name="carRental">Initial value of the CarRental property.</param>
-        public static Airline CreateAirline(global::System.Int32 airlineID, global::System.String name, global::System.String airlineCountry, global::System.String phone, global::System.String website, global::System.Boolean onlineCheckIN, global::System.Boolean hotelBooking, global::System.Boolean carRental)
+        public static Airline CreateAirline(global::System.Int32 airlineID)
         {
             Airline airline = new Airline();
             airline.AirlineID = airlineID;
-            airline.Name = name;
-            airline.AirlineCountry = airlineCountry;
-            airline.Phone = phone;
-            airline.Website = website;
-            airline.OnlineCheckIN = onlineCheckIN;
-            airline.HotelBooking = hotelBooking;
-            airline.CarRental = carRental;
             return airline;
         }
 
@@ -668,7 +632,7 @@ namespace Flights_Service
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Name
         {
@@ -680,7 +644,7 @@ namespace Flights_Service
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -692,7 +656,7 @@ namespace Flights_Service
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String AirlineCountry
         {
@@ -704,7 +668,7 @@ namespace Flights_Service
             {
                 OnAirlineCountryChanging(value);
                 ReportPropertyChanging("AirlineCountry");
-                _AirlineCountry = StructuralObject.SetValidValue(value, false);
+                _AirlineCountry = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("AirlineCountry");
                 OnAirlineCountryChanged();
             }
@@ -716,7 +680,7 @@ namespace Flights_Service
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Phone
         {
@@ -728,7 +692,7 @@ namespace Flights_Service
             {
                 OnPhoneChanging(value);
                 ReportPropertyChanging("Phone");
-                _Phone = StructuralObject.SetValidValue(value, false);
+                _Phone = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Phone");
                 OnPhoneChanged();
             }
@@ -740,7 +704,7 @@ namespace Flights_Service
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Website
         {
@@ -752,7 +716,7 @@ namespace Flights_Service
             {
                 OnWebsiteChanging(value);
                 ReportPropertyChanging("Website");
-                _Website = StructuralObject.SetValidValue(value, false);
+                _Website = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Website");
                 OnWebsiteChanged();
             }
@@ -764,9 +728,9 @@ namespace Flights_Service
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Boolean OnlineCheckIN
+        public Nullable<global::System.Boolean> OnlineCheckIN
         {
             get
             {
@@ -781,16 +745,16 @@ namespace Flights_Service
                 OnOnlineCheckINChanged();
             }
         }
-        private global::System.Boolean _OnlineCheckIN;
-        partial void OnOnlineCheckINChanging(global::System.Boolean value);
+        private Nullable<global::System.Boolean> _OnlineCheckIN;
+        partial void OnOnlineCheckINChanging(Nullable<global::System.Boolean> value);
         partial void OnOnlineCheckINChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Boolean HotelBooking
+        public Nullable<global::System.Boolean> HotelBooking
         {
             get
             {
@@ -805,16 +769,16 @@ namespace Flights_Service
                 OnHotelBookingChanged();
             }
         }
-        private global::System.Boolean _HotelBooking;
-        partial void OnHotelBookingChanging(global::System.Boolean value);
+        private Nullable<global::System.Boolean> _HotelBooking;
+        partial void OnHotelBookingChanging(Nullable<global::System.Boolean> value);
         partial void OnHotelBookingChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Boolean CarRental
+        public Nullable<global::System.Boolean> CarRental
         {
             get
             {
@@ -829,8 +793,8 @@ namespace Flights_Service
                 OnCarRentalChanged();
             }
         }
-        private global::System.Boolean _CarRental;
-        partial void OnCarRentalChanging(global::System.Boolean value);
+        private Nullable<global::System.Boolean> _CarRental;
+        partial void OnCarRentalChanging(Nullable<global::System.Boolean> value);
         partial void OnCarRentalChanged();
 
         #endregion
@@ -878,28 +842,10 @@ namespace Flights_Service
         /// Create a new AirportInfo object.
         /// </summary>
         /// <param name="airportID">Initial value of the AirportID property.</param>
-        /// <param name="code">Initial value of the Code property.</param>
-        /// <param name="airportPhone">Initial value of the AirportPhone property.</param>
-        /// <param name="type">Initial value of the Type property.</param>
-        /// <param name="fax">Initial value of the Fax property.</param>
-        /// <param name="city">Initial value of the City property.</param>
-        /// <param name="street">Initial value of the Street property.</param>
-        /// <param name="postalcode">Initial value of the Postalcode property.</param>
-        /// <param name="airportWebsite">Initial value of the AirportWebsite property.</param>
-        /// <param name="airport">Initial value of the Airport property.</param>
-        public static AirportInfo CreateAirportInfo(global::System.Int32 airportID, global::System.String code, global::System.String airportPhone, global::System.String type, global::System.Boolean fax, global::System.String city, global::System.String street, global::System.String postalcode, global::System.String airportWebsite, global::System.String airport)
+        public static AirportInfo CreateAirportInfo(global::System.Int32 airportID)
         {
             AirportInfo airportInfo = new AirportInfo();
             airportInfo.AirportID = airportID;
-            airportInfo.Code = code;
-            airportInfo.AirportPhone = airportPhone;
-            airportInfo.Type = type;
-            airportInfo.Fax = fax;
-            airportInfo.City = city;
-            airportInfo.Street = street;
-            airportInfo.Postalcode = postalcode;
-            airportInfo.AirportWebsite = airportWebsite;
-            airportInfo.Airport = airport;
             return airportInfo;
         }
 
@@ -937,7 +883,7 @@ namespace Flights_Service
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Code
         {
@@ -949,7 +895,7 @@ namespace Flights_Service
             {
                 OnCodeChanging(value);
                 ReportPropertyChanging("Code");
-                _Code = StructuralObject.SetValidValue(value, false);
+                _Code = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Code");
                 OnCodeChanged();
             }
@@ -961,7 +907,7 @@ namespace Flights_Service
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String AirportPhone
         {
@@ -973,7 +919,7 @@ namespace Flights_Service
             {
                 OnAirportPhoneChanging(value);
                 ReportPropertyChanging("AirportPhone");
-                _AirportPhone = StructuralObject.SetValidValue(value, false);
+                _AirportPhone = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("AirportPhone");
                 OnAirportPhoneChanged();
             }
@@ -985,7 +931,7 @@ namespace Flights_Service
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Type
         {
@@ -997,7 +943,7 @@ namespace Flights_Service
             {
                 OnTypeChanging(value);
                 ReportPropertyChanging("Type");
-                _Type = StructuralObject.SetValidValue(value, false);
+                _Type = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Type");
                 OnTypeChanged();
             }
@@ -1009,9 +955,9 @@ namespace Flights_Service
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Boolean Fax
+        public Nullable<global::System.Boolean> Fax
         {
             get
             {
@@ -1026,14 +972,14 @@ namespace Flights_Service
                 OnFaxChanged();
             }
         }
-        private global::System.Boolean _Fax;
-        partial void OnFaxChanging(global::System.Boolean value);
+        private Nullable<global::System.Boolean> _Fax;
+        partial void OnFaxChanging(Nullable<global::System.Boolean> value);
         partial void OnFaxChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String City
         {
@@ -1045,7 +991,7 @@ namespace Flights_Service
             {
                 OnCityChanging(value);
                 ReportPropertyChanging("City");
-                _City = StructuralObject.SetValidValue(value, false);
+                _City = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("City");
                 OnCityChanged();
             }
@@ -1057,7 +1003,7 @@ namespace Flights_Service
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Street
         {
@@ -1069,7 +1015,7 @@ namespace Flights_Service
             {
                 OnStreetChanging(value);
                 ReportPropertyChanging("Street");
-                _Street = StructuralObject.SetValidValue(value, false);
+                _Street = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Street");
                 OnStreetChanged();
             }
@@ -1081,7 +1027,7 @@ namespace Flights_Service
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Postalcode
         {
@@ -1093,7 +1039,7 @@ namespace Flights_Service
             {
                 OnPostalcodeChanging(value);
                 ReportPropertyChanging("Postalcode");
-                _Postalcode = StructuralObject.SetValidValue(value, false);
+                _Postalcode = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Postalcode");
                 OnPostalcodeChanged();
             }
@@ -1105,7 +1051,7 @@ namespace Flights_Service
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String AirportWebsite
         {
@@ -1117,7 +1063,7 @@ namespace Flights_Service
             {
                 OnAirportWebsiteChanging(value);
                 ReportPropertyChanging("AirportWebsite");
-                _AirportWebsite = StructuralObject.SetValidValue(value, false);
+                _AirportWebsite = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("AirportWebsite");
                 OnAirportWebsiteChanged();
             }
@@ -1129,7 +1075,7 @@ namespace Flights_Service
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Airport
         {
@@ -1141,7 +1087,7 @@ namespace Flights_Service
             {
                 OnAirportChanging(value);
                 ReportPropertyChanging("Airport");
-                _Airport = StructuralObject.SetValidValue(value, false);
+                _Airport = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Airport");
                 OnAirportChanged();
             }
@@ -1195,26 +1141,10 @@ namespace Flights_Service
         /// Create a new Flight object.
         /// </summary>
         /// <param name="flightID">Initial value of the FlightID property.</param>
-        /// <param name="date">Initial value of the Date property.</param>
-        /// <param name="flightNumber">Initial value of the FlightNumber property.</param>
-        /// <param name="depTime">Initial value of the DepTime property.</param>
-        /// <param name="arrvTime">Initial value of the ArrvTime property.</param>
-        /// <param name="status">Initial value of the Status property.</param>
-        /// <param name="groundOp">Initial value of the GroundOp property.</param>
-        /// <param name="airlineID">Initial value of the AirlineID property.</param>
-        /// <param name="aircraftID">Initial value of the AircraftID property.</param>
-        public static Flight CreateFlight(global::System.Int32 flightID, global::System.DateTime date, global::System.String flightNumber, global::System.DateTime depTime, global::System.DateTime arrvTime, global::System.String status, global::System.String groundOp, global::System.Int32 airlineID, global::System.Int32 aircraftID)
+        public static Flight CreateFlight(global::System.Int32 flightID)
         {
             Flight flight = new Flight();
             flight.FlightID = flightID;
-            flight.Date = date;
-            flight.FlightNumber = flightNumber;
-            flight.DepTime = depTime;
-            flight.ArrvTime = arrvTime;
-            flight.Status = status;
-            flight.GroundOp = groundOp;
-            flight.AirlineID = airlineID;
-            flight.AircraftID = aircraftID;
             return flight;
         }
 
@@ -1252,9 +1182,9 @@ namespace Flights_Service
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime Date
+        public global::System.String Date
         {
             get
             {
@@ -1264,19 +1194,19 @@ namespace Flights_Service
             {
                 OnDateChanging(value);
                 ReportPropertyChanging("Date");
-                _Date = StructuralObject.SetValidValue(value);
+                _Date = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Date");
                 OnDateChanged();
             }
         }
-        private global::System.DateTime _Date;
-        partial void OnDateChanging(global::System.DateTime value);
+        private global::System.String _Date;
+        partial void OnDateChanging(global::System.String value);
         partial void OnDateChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String FlightNumber
         {
@@ -1288,7 +1218,7 @@ namespace Flights_Service
             {
                 OnFlightNumberChanging(value);
                 ReportPropertyChanging("FlightNumber");
-                _FlightNumber = StructuralObject.SetValidValue(value, false);
+                _FlightNumber = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("FlightNumber");
                 OnFlightNumberChanged();
             }
@@ -1300,9 +1230,9 @@ namespace Flights_Service
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime DepTime
+        public global::System.String DepTime
         {
             get
             {
@@ -1312,21 +1242,21 @@ namespace Flights_Service
             {
                 OnDepTimeChanging(value);
                 ReportPropertyChanging("DepTime");
-                _DepTime = StructuralObject.SetValidValue(value);
+                _DepTime = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("DepTime");
                 OnDepTimeChanged();
             }
         }
-        private global::System.DateTime _DepTime;
-        partial void OnDepTimeChanging(global::System.DateTime value);
+        private global::System.String _DepTime;
+        partial void OnDepTimeChanging(global::System.String value);
         partial void OnDepTimeChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime ArrvTime
+        public global::System.String ArrvTime
         {
             get
             {
@@ -1336,19 +1266,19 @@ namespace Flights_Service
             {
                 OnArrvTimeChanging(value);
                 ReportPropertyChanging("ArrvTime");
-                _ArrvTime = StructuralObject.SetValidValue(value);
+                _ArrvTime = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("ArrvTime");
                 OnArrvTimeChanged();
             }
         }
-        private global::System.DateTime _ArrvTime;
-        partial void OnArrvTimeChanging(global::System.DateTime value);
+        private global::System.String _ArrvTime;
+        partial void OnArrvTimeChanging(global::System.String value);
         partial void OnArrvTimeChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Status
         {
@@ -1360,7 +1290,7 @@ namespace Flights_Service
             {
                 OnStatusChanging(value);
                 ReportPropertyChanging("Status");
-                _Status = StructuralObject.SetValidValue(value, false);
+                _Status = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Status");
                 OnStatusChanged();
             }
@@ -1372,7 +1302,7 @@ namespace Flights_Service
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String GroundOp
         {
@@ -1384,7 +1314,7 @@ namespace Flights_Service
             {
                 OnGroundOpChanging(value);
                 ReportPropertyChanging("GroundOp");
-                _GroundOp = StructuralObject.SetValidValue(value, false);
+                _GroundOp = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("GroundOp");
                 OnGroundOpChanged();
             }
@@ -1396,9 +1326,9 @@ namespace Flights_Service
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 AirlineID
+        public Nullable<global::System.Int32> AirlineID
         {
             get
             {
@@ -1413,16 +1343,16 @@ namespace Flights_Service
                 OnAirlineIDChanged();
             }
         }
-        private global::System.Int32 _AirlineID;
-        partial void OnAirlineIDChanging(global::System.Int32 value);
+        private Nullable<global::System.Int32> _AirlineID;
+        partial void OnAirlineIDChanging(Nullable<global::System.Int32> value);
         partial void OnAirlineIDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 AircraftID
+        public Nullable<global::System.Int32> AircraftID
         {
             get
             {
@@ -1437,8 +1367,8 @@ namespace Flights_Service
                 OnAircraftIDChanged();
             }
         }
-        private global::System.Int32 _AircraftID;
-        partial void OnAircraftIDChanging(global::System.Int32 value);
+        private Nullable<global::System.Int32> _AircraftID;
+        partial void OnAircraftIDChanging(Nullable<global::System.Int32> value);
         partial void OnAircraftIDChanged();
 
         #endregion

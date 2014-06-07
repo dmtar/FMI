@@ -1,16 +1,59 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Process.aspx.cs" Inherits="Flights_Service.Process" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Flights.Master" CodeBehind="Process.aspx.cs" Inherits="Flights_Service.Process" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<asp:Content runat="server" ContentPlaceHolderID="head">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
+    <title>Обработка на XML файлове</title>
+    <style type="text/css">
+        .success
+        {
+            color: Blue;
+        }
+        .fail
+        {
+            color: Red;
+        }
+    </style>
+
+</asp:Content>
+<asp:Content ID="Content1" runat="server" ContentPlaceHolderID="body">
     <div>
-    
+        <asp:LinkButton ID="LinkButton1" Text="Назад" runat="server" PostBackUrl="~/Default.aspx" />
+        <asp:ScriptManager ID="ScriptManager1" runat="server" />
+        <asp:UpdatePanel runat="server" UpdateMode="Conditional" ID="up1">
+            <ContentTemplate>
+                <asp:Panel ID="PanelResults" runat="server">
+                </asp:Panel>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+
+        <asp:UpdatePanel runat="server" UpdateMode="Conditional" ID="up2">
+            <ContentTemplate>
+                <asp:SqlDataSource
+                    ID="SQLDS" 
+                    runat="server" 
+                    DataSourceMode="DataReader" 
+                    ConnectionString="<%$ConnectionStrings:FlightsConnectionString%>"
+                    SelectCommand="SELECT * FROM Flight" 
+                    UpdateCommand="UPDATE Flight SET FlightNumber=@FlightNumber WHERE FlightID=@FlightID">
+                </asp:SqlDataSource>
+                <asp:ListBox ID="ListBox1" runat="server" DataSourceID="SQLDS">
+                </asp:ListBox>
+                <asp:GridView 
+                    ID="GridView1" 
+                    runat="server" 
+                    DataSourceID="SQLDS" 
+                    AutoGenerateEditButton="true"
+                    AutoGenerateColumns="false" 
+                    DataKeyNames="FlightID">
+                    <Columns>
+                        <asp:BoundField HeaderText="Flight Number" DataField="FlightNumber" />
+                        <asp:BoundField HeaderText="Flight ID" DataField="FlightID" />
+                    </Columns>
+                </asp:GridView>
+
+                <asp:Button ID="Button1" Text="Изпразни БД" runat="server" OnClick="TruncateDB" />  
+                           
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>

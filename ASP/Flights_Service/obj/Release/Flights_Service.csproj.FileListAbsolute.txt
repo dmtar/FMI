@@ -1,0 +1,4 @@
+C:\Users\Dimitar\git\FMI\ASP\Flights_Service\bin\Flights_Service.dll
+C:\Users\Dimitar\git\FMI\ASP\Flights_Service\bin\Flights_Service.pdb
+C:\Users\Dimitar\git\FMI\ASP\Flights_Service\obj\Release\Flights_Service.dll
+C:\Users\Dimitar\git\FMI\ASP\Flights_Service\obj\Release\Flights_Service.pdb
