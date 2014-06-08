@@ -2,46 +2,57 @@
 <!DOCTYPE Flight SYSTEM "Flights.dtd">
 <Flight>
   <FlightID>1</FlightID>
-  <Date>1</Date>
-  <FlightNumber>1</FlightNumber>
-  <DepTime>1</DepTime>
-  <ArrvTime>1</ArrvTime>
-  <Status>1</Status>
-  <GroundOp>1</GroundOp>
+  <Date>8.6.2014</Date>
+  <FlightNumber>A345</FlightNumber>
+  <DepTime>12:45</DepTime>
+  <ArrvTime>14:30</ArrvTime>
+  <Status>излетял</Status>
+  <GroundOp></GroundOp>
   <Airline>
-    <AirlineID>2</AirlineID>
-    <Name>1</Name>
-    <AirlineCountry>1</AirlineCountry>
-    <Phone>1</Phone>
+    <AirlineID>1</AirlineID>
+    <Name>БългарияЕър</Name>
+    <AirlineCountry>България</AirlineCountry>
+    <Phone>089898989</Phone>
     <Website OnlineCheckIN="не" HotelBooking="не" CarRental="не" />
   </Airline>
-  <Aircraft Type="1" Capacity="1" Engines="1">
+  <Aircraft Type="А320" Capacity="350" Engines="2">
     <AircraftID>1</AircraftID>
-    <Description>1</Description>
-    <FirstDate>1</FirstDate>
-    <Length>1</Length>
-    <Height>1</Height>
-    <Wingspan>1</Wingspan>
-    <Diameter>1</Diameter>
-    <Speed>1</Speed>
-    <Manufacturer></Manufacturer>
+    <Description>Самолет за къси разстояния.</Description>
+    <FirstDate>12.12.1996</FirstDate>
+    <Length>39.50</Length>
+    <Height>12</Height>
+    <Wingspan>8.7</Wingspan>
+    <Diameter>Самолет за къси разстояния.</Diameter>
+    <Speed>996.7</Speed>
+    <Manufacturer>Холандия</Manufacturer>
   </Aircraft>
-  <AirportInfo Airport="кацане">
+  <AirportInfo Airport="излитане">
     <AirportID>1</AirportID>
-    <Code>1</Code>
-    <AirportPhone Type="стационарен" Fax="не">1</AirportPhone>
+    <Code>SOF</Code>
+    <AirportPhone Type="мобилен" Fax="не">089898989</AirportPhone>
     <Address>
-      <City>1</City>
-      <Street>1</Street>
-      <Postalcode>1</Postalcode>
-      <AirportWebsite>1</AirportWebsite>
+      <City>София</City>
+      <Street>Христофор Колумб</Street>
+      <Postalcode>1000</Postalcode>
+      <AirportWebsite>www.sofia-airport.bg/</AirportWebsite>
+    </Address>
+  </AirportInfo>
+  <AirportInfo Airport="кацане">
+    <AirportID>2</AirportID>
+    <Code>ATL</Code>
+    <AirportPhone Type="стационарен" Fax="да">012003000</AirportPhone>
+    <Address>
+      <City>Атланта</City>
+      <Street></Street>
+      <Postalcode></Postalcode>
+      <AirportWebsite>www.atlanta-airport.com</AirportWebsite>
     </Address>
   </AirportInfo>
   <Member Position="пилот">
     <MemberID>1</MemberID>
-    <MemberName>1</MemberName>
-    <Country>1</Country>
-    <Age>1</Age>
-    <Years>1</Years>
+    <MemberName>Димитър Иванов</MemberName>
+    <Country>България</Country>
+    <Age>45</Age>
+    <Years>20</Years>
   </Member>
 </Flight>

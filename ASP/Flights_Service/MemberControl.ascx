@@ -22,7 +22,7 @@
             <asp:Label ID="MemberNameLabel" Text="Име: *" runat="server" AssociatedControlID="MemberNameInput" />
         </td>
         <td>
-            <asp:TextBox runat="server" ID="MemberNameInput" MaxLength="10" />
+            <asp:TextBox runat="server" ID="MemberNameInput" />
             <asp:RequiredFieldValidator ID="MemberNameRFV" ErrorMessage="* Задължително поле" ControlToValidate="MemberNameInput"
                 Display="Dynamic" ForeColor="Red" runat="server" />
         </td>
