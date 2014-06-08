@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Flight SYSTEM "Flights.dtd">
+<Flight>
+  <FlightID>2</FlightID>
+  <Date>1.2.2014</Date>
+  <FlightNumber>P112</FlightNumber>
+  <DepTime>6:00</DepTime>
+  <ArrvTime>8:30</ArrvTime>
+  <Status>излетял</Status>
+  <GroundOp></GroundOp>
+  <Airline>
+    <AirlineID>2</AirlineID>
+    <Name>БългарияЕър</Name>
+    <AirlineCountry>България</AirlineCountry>
+    <Phone></Phone>
+    <Website OnlineCheckIN="не" HotelBooking="не" CarRental="не" />
+  </Airline>
+  <Aircraft Type="Боинг" Capacity="500" Engines="4">
+    <AircraftID>2</AircraftID>
+    <Description>Самолет за дълги разстояния</Description>
+    <FirstDate>12.3.1998</FirstDate>
+    <Length>56</Length>
+    <Height>10</Height>
+    <Wingspan>22</Wingspan>
+    <Diameter>Самолет за дълги разстояния</Diameter>
+    <Speed>1100</Speed>
+    <Manufacturer>Германия</Manufacturer>
+  </Aircraft>
+  <AirportInfo Airport="излитане">
+    <AirportID>3</AirportID>
+    <Code>SOF</Code>
+    <AirportPhone Type="мобилен" Fax="не">123456</AirportPhone>
+    <Address>
+      <City>София</City>
+      <Street>Христофор Колумб</Street>
+      <Postalcode>1000</Postalcode>
+      <AirportWebsite>www.sofia-airport.bg/</AirportWebsite>
+    </Address>
+  </AirportInfo>
+  <AirportInfo Airport="кацане">
+    <AirportID>4</AirportID>
+    <Code>TST</Code>
+    <AirportPhone Type="стационарен" Fax="да">654321</AirportPhone>
+    <Address>
+      <City>Лондон</City>
+      <Street></Street>
+      <Postalcode>123</Postalcode>
+      <AirportWebsite></AirportWebsite>
+    </Address>
+  </AirportInfo>
+  <Member Position="пилот">
+    <MemberID>2</MemberID>
+    <MemberName>Георги Петков</MemberName>
+    <Country>България</Country>
+    <Age>39</Age>
+    <Years>15</Years>
+  </Member>
+  <Member Position="пилот">
+    <MemberID>3</MemberID>
+    <MemberName>Петър Петров</MemberName>
+    <Country>България</Country>
+    <Age>42</Age>
+    <Years>15</Years>
+  </Member>
+</Flight>
