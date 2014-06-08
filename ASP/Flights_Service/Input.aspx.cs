@@ -33,6 +33,7 @@ namespace Flights_Service
 
         protected override void OnInit(EventArgs e)
         {
+            XMLValidator validator = new XMLValidator();
             base.OnInit(e);
             dynamicAirports = new List<AirportControl>();
             dynamicMembers = new List<MemberControl>();
@@ -159,22 +160,64 @@ namespace Flights_Service
 
         protected void ValidateEngines(object source, ServerValidateEventArgs args)
         {
-            //TODO: check the input number, engines should be more than 0 and less than 6.
-            args.IsValid = true;
+            string input = args.Value;
+            int Engines;
+            if (int.TryParse(input, out Engines))
+            {
+                if (Engines > 0 && Engines < 10)
+                    args.IsValid = true;
+                else
+                {
+                    CustomValidatorValidateEngines.ErrorMessage = "Брой двигатели е число от 0 до 10!";
+                    args.IsValid = false;
+                }
+            }
+            else
+            {
+                CustomValidatorValidateEngines.ErrorMessage = "Невалидни данни!";
+                args.IsValid = false;
+            }
         }
 
         protected void ValidateCapacity(object source, ServerValidateEventArgs args)
         {
-            //TODO: check the input number, capacity is between 0 and 550.
-            args.IsValid = true;
+            string input = args.Value;
+            int Capacity;
+            if (int.TryParse(input, out Capacity))
+            {
+                if (Capacity > 0 && Capacity < 550)
+                    args.IsValid = true;
+                else
+                {
+                    CustomValidatorValidateCapacity.ErrorMessage = "Капацитета е число от 0 до 550!";
+                    args.IsValid = false;
+                }
+            }
+            else
+            {
+                CustomValidatorValidateCapacity.ErrorMessage = "Невалидни данни!";
+                args.IsValid = false;
+            }
         }
 
         protected void ValidateDecimal(object source, ServerValidateEventArgs args)
         {
-            //TODO: check the input number.
-            args.IsValid = true;
+            string input = args.Value;
+            int Number;
+            decimal Test;
+            if (int.TryParse(input, out Number))
+            {
+                args.IsValid = true;
+            }
+            if (decimal.TryParse(input, out Test))
+            {
+                args.IsValid = true;
+            }
+            else
+            {
+                args.IsValid = false;
+            }
         }
-
         protected void ValidateAirlineID(object source, ServerValidateEventArgs args)
         {
             string input = args.Value;
@@ -189,13 +232,13 @@ namespace Flights_Service
                     args.IsValid = true;
                 else
                 {
-                    CustomValidatorFlightID.ErrorMessage = "* Съществуващо ID";
+                    CustomValidatorAirlineID.ErrorMessage = "* Съществуващо ID";
                     args.IsValid = false;
                 }
             }
             else
             {
-                CustomValidatorFlightID.ErrorMessage = "* Невалидно ID";
+                CustomValidatorAirlineID.ErrorMessage = "* Невалидно ID";
                 args.IsValid = false;
             }
         }
@@ -214,13 +257,13 @@ namespace Flights_Service
                     args.IsValid = true;
                 else
                 {
-                    CustomValidatorFlightID.ErrorMessage = "* Съществуващо ID";
+                    CustomValidatorAircraftID.ErrorMessage = "* Съществуващо ID";
                     args.IsValid = false;
                 }
             }
             else
             {
-                CustomValidatorFlightID.ErrorMessage = "* Невалидно ID";
+                CustomValidatorAircraftID.ErrorMessage = "* Невалидно ID";
                 args.IsValid = false;
             }
         }
@@ -287,7 +330,8 @@ namespace Flights_Service
                 XMLCreatorLINQ creator = new XMLCreatorLINQ();
                 FlightsEntities flightContext = new FlightsEntities();
                 Flight flight = new Flight();
-                flight.FlightID = Int16.Parse(Request.Form["ctl00$body$FlightID"]);
+                flight.FlightID = Int32.Parse(Request.Form["ctl00$body$FlightID"]);
+                flight.Date = Request.Form["ctl00$body$Date"];
                 flight.FlightNumber = Request.Form["ctl00$body$FlightNumber"];
                 flight.DepTime = Request.Form["ctl00$body$DepTime"];
                 flight.ArrvTime = Request.Form["ctl00$body$ArrvTime"];
@@ -296,7 +340,7 @@ namespace Flights_Service
 
                 flight.Airline = new Airline
                 {
-                   AirlineID = Int16.Parse(Request.Form["ctl00$body$AirlineID"]),
+                   AirlineID = Int32.Parse(Request.Form["ctl00$body$AirlineID"]),
                    Name = Request.Form["ctl00$body$AirlineName"],
                    AirlineCountry = Request.Form["ctl00$body$AirlineCountry"],
                    Phone = Request.Form["ctl00$body$AirlinePhone"],
@@ -310,7 +354,7 @@ namespace Flights_Service
                     Type = Request.Form["ctl00$body$Type"],
                     Capacity = Request.Form["ctl00$body$Capacity"],
                     Engines = Request.Form["ctl00$body$Engines"],
-                    AircraftID = Int16.Parse(Request.Form["ctl00$body$AircraftID"]),
+                    AircraftID = Int32.Parse(Request.Form["ctl00$body$AircraftID"]),
                     Description = Request.Form["ctl00$body$Description"],
                     FirstDate = Request.Form["ctl00$body$FirstDate"],
                     Length = Request.Form["ctl00$body$Length"],
@@ -326,7 +370,7 @@ namespace Flights_Service
                 {
                     airportInfo = new AirportInfo();
                     airportInfo.Airport = Request.Form["ctl00$body$airport" + (i + 1) + "$AirportDropDown"];
-                    airportInfo.AirportID = Int16.Parse(Request.Form["ctl00$body$airport" + (i + 1) + "$AirportID"]);
+                    airportInfo.AirportID = Int32.Parse(Request.Form["ctl00$body$airport" + (i + 1) + "$AirportID"]);
                     airportInfo.Code = Request.Form["ctl00$body$airport" + (i + 1) + "$AirportCode"];
                     airportInfo.AirportPhone = Request.Form["ctl00$body$airport" + (i + 1) + "$AirportPhoneInput"];
                     airportInfo.Type = Request.Form["ctl00$body$airport" + (i + 1) + "$AirportPhoneType"];
@@ -343,11 +387,11 @@ namespace Flights_Service
                 {
                     member = new Member();
                     member.Position = Request.Form["ctl00$body$member" + (i + 1) + "$MemberPosition"];
-                    member.MemberID = Int16.Parse(Request.Form["ctl00$body$member" + (i + 1) + "$MemberID"]);
+                    member.MemberID = Int32.Parse(Request.Form["ctl00$body$member" + (i + 1) + "$MemberID"]);
                     member.MemberName = Request.Form["ctl00$body$member" + (i + 1) + "$MemberNameInput"];
                     member.Country = Request.Form["ctl00$body$member" + (i + 1) + "$MemberCountry"];
-                    member.Age = Int16.Parse(Request.Form["ctl00$body$member" + (i + 1) + "$MemberAge"]);
-                    member.Years = Int16.Parse(Request.Form["ctl00$body$member" + (i + 1) + "$MemberYears"]);
+                    member.Age = Request.Form["ctl00$body$member" + (i + 1) + "$MemberAge"];
+                    member.Years = Request.Form["ctl00$body$member" + (i + 1) + "$MemberYears"];
                     flight.Members.Add(member);
                 }
                 creator.CreateFlightXMLDocument(Server.MapPath("~/App_Data/" + flight.FlightID + ".xml"),"Flights.dtd", flight);
@@ -356,8 +400,17 @@ namespace Flights_Service
                 flightContext.SaveChanges();
                 DivForm.Visible = false;
                 DivSuccess.Visible = true;
+                XMLValidator validator = new XMLValidator();
+                try
+                {
+                    validator.Validate(Server.MapPath("~/App_Data/" + flight.FlightID + ".xml"));
+                    DivDTDSuccess.Visible = true;
+                }
+                catch (Exception)
+                {
+                    DivDTDFalse.Visible = true;
+                }
             }
         }
-
     }
 }

@@ -85,10 +85,10 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FlightEntities.Designer.cs">
+    <Compile Include="FlightEntity.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FlightEntities.edmx</DependentUpon>
+      <DependentUpon>FlightEntity.edmx</DependentUpon>
     </Compile>
     <Compile Include="Flights.Master.cs">
       <DependentUpon>Flights.Master</DependentUpon>
@@ -126,9 +126,9 @@
   <ItemGroup />
   <ItemGroup>
     <None Include="App_Data\Flights.dtd" />
-    <EntityDeploy Include="FlightEntities.edmx">
+    <EntityDeploy Include="FlightEntity.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FlightEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>FlightEntity.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

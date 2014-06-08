@@ -8,6 +8,13 @@
             <asp:TextBox runat="server" ID="MemberID" MaxLength="10" />
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ErrorMessage="* Задължително поле" ControlToValidate="MemberID"
                 Display="Dynamic" ForeColor="Red" runat="server" />
+             <asp:CustomValidator 
+                        ID="CustomValidator1" 
+                        ControlToValidate="MemberID"
+                        Display="Dynamic" 
+                        ForeColor="Red" 
+                        OnServerValidate="ValidateMemberID" 
+                        runat="server" />
         </td>
     </tr>
     <tr>

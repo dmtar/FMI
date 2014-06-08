@@ -8,6 +8,13 @@
             <asp:TextBox runat="server" ID="AirportID" MaxLength="10" />
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ErrorMessage="* Задължително поле" ControlToValidate="AirportID"
                 Display="Dynamic" ForeColor="Red" runat="server" />
+            <asp:CustomValidator 
+                        ID="CustomValidator2" 
+                        ControlToValidate="AirportID"
+                        Display="Dynamic" 
+                        ForeColor="Red" 
+                        OnServerValidate="ValidateAirportInfoID" 
+                        runat="server" />
         </td>
     </tr>
     <tr>
@@ -33,7 +40,26 @@
             <asp:Label ID="AirportPhoneTypeLabel" Text="Тип на телефона:" runat="server" AssociatedControlID="AirportPhoneType" />
         </td>
         <td>
-            <asp:TextBox runat="server" ID="AirportPhoneType" MaxLength="100" />
+           <asp:DropDownList ID="AirportPhoneType" runat="server">
+           <asp:ListItem
+                Enabled="True"
+                Selected="True"
+            />
+           <asp:ListItem
+                Enabled="True"
+                Selected="False"
+                Text="стационарен"
+                Value="стационарен"
+            />
+            <asp:ListItem
+                Enabled="True"
+                Selected="False"
+                Text="мобилен"
+                Value="мобилен"
+            />
+            </asp:DropDownList>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ErrorMessage="* Задължително поле" ControlToValidate="AirportPhoneType"
+                Display="Dynamic" ForeColor="Red" runat="server" />
         </td>
     </tr>
             <tr>

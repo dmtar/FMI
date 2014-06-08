@@ -79,9 +79,7 @@ namespace Flights_Service
                 c.ExecuteNonQuery();
             }
             con.Close();
-
-            //ListBox1.DataBind();
-           // GridView1.DataBind();
+            TruncateLabel.Text = "Базата е празна!";
         }
     }
 }

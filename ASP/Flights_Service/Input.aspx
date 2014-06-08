@@ -7,7 +7,17 @@
 <asp:LinkButton ID="LinkButton1" Text="Назад" runat="server" PostBackUrl="~/Default.aspx" CausesValidation="false" />
     <div runat="server" id="DivSuccess" visible="false">
         <p style="color: Blue">
-            Операцията завърши успешно!
+            Данните са записани в базата!
+        </p>
+    </div>
+    <div runat="server" id="DivDTDFalse" visible="false">
+        <p style="color: Blue">
+            Документа не е валиден спрямо DTD!
+        </p>
+    </div>
+    <div runat="server" id="DivDTDSuccess" visible="false">
+        <p style="color: Blue">
+            Документа е валиден спрямо DTD!
         </p>
     </div>
 <div runat="server" id="DivForm">
@@ -131,7 +141,7 @@
                         Display="Dynamic" 
                         runat="server" />
                     <asp:CustomValidator 
-                        ID="AirlineIDCV" 
+                        ID="CustomValidatorAirlineID" 
                         ControlToValidate="AirlineID"
                         Display="Dynamic" 
                         ForeColor="Red" 
@@ -221,7 +231,7 @@
                         Display="Dynamic" 
                         runat="server" />
                     <asp:CustomValidator 
-                        ID="CustomValidator1" 
+                        ID="CustomValidatorAircraftID" 
                         ControlToValidate="AircraftID"
                         Display="Dynamic" 
                         ForeColor="Red" 
@@ -251,6 +261,13 @@
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="Length" />
+                                        <asp:CustomValidator 
+                        ID="CustomValidatorValidateDecimal1" 
+                        ControlToValidate="Length"
+                        Display="Dynamic" 
+                        ForeColor="Red" 
+                        OnServerValidate="ValidateDecimal" 
+                        runat="server" />
                 </td>
             </tr>
             <tr>
@@ -259,6 +276,13 @@
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="Height" />
+                                        <asp:CustomValidator 
+                        ID="CustomValidatorValidateDecimal2" 
+                        ControlToValidate="Height"
+                        Display="Dynamic" 
+                        ForeColor="Red" 
+                        OnServerValidate="ValidateDecimal" 
+                        runat="server" />
                 </td>
             </tr>
             <tr>
@@ -267,6 +291,13 @@
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="Wingspan" />
+                                                            <asp:CustomValidator 
+                        ID="CustomValidatorValidateDecimal3" 
+                        ControlToValidate="Wingspan"
+                        Display="Dynamic" 
+                        ForeColor="Red" 
+                        OnServerValidate="ValidateDecimal" 
+                        runat="server" />
                 </td>
             </tr>
             <tr>
@@ -275,6 +306,13 @@
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="Diameter" />
+                                                            <asp:CustomValidator 
+                        ID="CustomValidatorValidateDecimal4" 
+                        ControlToValidate="Diameter"
+                        Display="Dynamic" 
+                        ForeColor="Red" 
+                        OnServerValidate="ValidateDecimal" 
+                        runat="server" />
                 </td>
             </tr>
             <tr>
@@ -283,6 +321,13 @@
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="Speed" />
+                                                            <asp:CustomValidator 
+                        ID="CustomValidatorValidateDecimal5" 
+                        ControlToValidate="Speed"
+                        Display="Dynamic" 
+                        ForeColor="Red" 
+                        OnServerValidate="ValidateDecimal" 
+                        runat="server" />
                 </td>
             </tr>
             <tr>
@@ -322,7 +367,7 @@
                         Display="Dynamic" 
                         runat="server" />
                     <asp:CustomValidator 
-                        ID="CustomValidator7" 
+                        ID="CustomValidatorValidateCapacity" 
                         ControlToValidate="Capacity"
                         onservervalidate="ValidateCapacity" 
                         ForeColor="Red" 
@@ -344,7 +389,7 @@
                         Display="Dynamic" 
                         runat="server" />
                     <asp:CustomValidator 
-                        ID="CustomValidator8" 
+                        ID="CustomValidatorValidateEngines" 
                         ControlToValidate="Engines"
                         onservervalidate="ValidateEngines" 
                         ForeColor="Red" 
@@ -386,6 +431,7 @@
         <div style="text-align: right">
         </div>
         <asp:Button ID="BtnSubmit" Text="Запиши полета" runat="server" OnClick="BtnSubmit_Click" />
+        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" />
         <p>Изпращането на формата ще създаде XML файл и ще вмъкне информацията в БД.</p>
     </div>
 </asp:Content>

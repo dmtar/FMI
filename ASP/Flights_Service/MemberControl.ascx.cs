@@ -78,5 +78,29 @@ namespace Flights_Service
                 ViewState["Years"] = this.MemberYears.Text.Trim();
             }
         }
+        protected void ValidateMemberID(object source, ServerValidateEventArgs args)
+        {
+            string input = args.Value;
+            int MemberID;
+            if (int.TryParse(input, out MemberID))
+            {
+                FlightsEntities context = new FlightsEntities();
+                var membersIDs =
+                    from member in context.Members
+                    select member.MemberID;
+                if (!membersIDs.Any(member => member == MemberID))
+                    args.IsValid = true;
+                else
+                {
+                    CustomValidator1.ErrorMessage = "* Съществуващо ID";
+                    args.IsValid = false;
+                }
+            }
+            else
+            {
+                CustomValidator1.ErrorMessage = "* Невалидно ID";
+                args.IsValid = false;
+            }
+        }
     }
 }

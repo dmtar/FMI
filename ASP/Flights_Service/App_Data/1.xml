@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Flight SYSTEM "Flights.dtd">
+<Flight>
+  <FlightID>1</FlightID>
+  <Date>1</Date>
+  <FlightNumber>1</FlightNumber>
+  <DepTime>1</DepTime>
+  <ArrvTime>1</ArrvTime>
+  <Status>1</Status>
+  <GroundOp>1</GroundOp>
+  <Airline>
+    <AirlineID>2</AirlineID>
+    <Name>1</Name>
+    <AirlineCountry>1</AirlineCountry>
+    <Phone>1</Phone>
+    <Website OnlineCheckIN="не" HotelBooking="не" CarRental="не" />
+  </Airline>
+  <Aircraft Type="1" Capacity="1" Engines="1">
+    <AircraftID>1</AircraftID>
+    <Description>1</Description>
+    <FirstDate>1</FirstDate>
+    <Length>1</Length>
+    <Height>1</Height>
+    <Wingspan>1</Wingspan>
+    <Diameter>1</Diameter>
+    <Speed>1</Speed>
+    <Manufacturer></Manufacturer>
+  </Aircraft>
+  <AirportInfo Airport="кацане">
+    <AirportID>1</AirportID>
+    <Code>1</Code>
+    <AirportPhone Type="стационарен" Fax="не">1</AirportPhone>
+    <Address>
+      <City>1</City>
+      <Street>1</Street>
+      <Postalcode>1</Postalcode>
+      <AirportWebsite>1</AirportWebsite>
+    </Address>
+  </AirportInfo>
+  <Member Position="пилот">
+    <MemberID>1</MemberID>
+    <MemberName>1</MemberName>
+    <Country>1</Country>
+    <Age>1</Age>
+    <Years>1</Years>
+  </Member>
+</Flight>

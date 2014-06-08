@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Flights_Service.Default" MasterPageFile="~/Flights.Master" %>
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="head">
-    <title>ASP.NET Примерен проект</title>
+    <title>ASP.NET проект</title>
 </asp:Content>
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="body">
     <div>

@@ -130,5 +130,45 @@ namespace Flights_Service
                 ViewState["Airport"] = this.AirportDropDown.Text.Trim();
             }
         }
+
+        protected void ValidateAirportInfoID(object source, ServerValidateEventArgs args)
+        {
+            string input = args.Value;
+            int AirportID;
+            if (int.TryParse(input, out AirportID))
+            {
+                FlightsEntities context = new FlightsEntities();
+                var aircraftsIDs =
+                    from airportInfo in context.AirportInfoes
+                    select airportInfo.AirportID;
+                if (!aircraftsIDs.Any(airport => airport == AirportID))
+                    args.IsValid = true;
+                else
+                {
+                    CustomValidator2.ErrorMessage = "* Съществуващо ID";
+                    args.IsValid = false;
+                }
+            }
+            else
+            {
+                CustomValidator2.ErrorMessage = "* Невалидно ID";
+                args.IsValid = false;
+            }
+        }
+        /*
+        protected void ValidatePhoneType(object source, ServerValidateEventArgs args)
+        {
+            string input = args.Value;
+            if (input == "стационарен" || input == "мобилен")
+            {
+                args.IsValid = true;
+            }
+            else
+            {
+                CustomValidatorPhoneType.ErrorMessage = "Невалиден тип на телефон";
+                args.IsValid = false;
+            }
+        }
+         */
     }
 }

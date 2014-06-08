@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FlightsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="FlightsModelStoreContainer">
+    <EntitySet Name="Aircraft" EntityType="FlightsModel.Store.Aircraft" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Airline" EntityType="FlightsModel.Store.Airline" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AirportInfo" EntityType="FlightsModel.Store.AirportInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Flight" EntityType="FlightsModel.Store.Flight" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Flights2Airports" EntityType="FlightsModel.Store.Flights2Airports" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Flights2Members" EntityType="FlightsModel.Store.Flights2Members" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Member" EntityType="FlightsModel.Store.Member" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="FlightsModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Flight_Aircraft" Association="FlightsModel.Store.FK_Flight_Aircraft">
+      <End Role="Aircraft" EntitySet="Aircraft" />
+      <End Role="Flight" EntitySet="Flight" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flight_Airline" Association="FlightsModel.Store.FK_Flight_Airline">
+      <End Role="Airline" EntitySet="Airline" />
+      <End Role="Flight" EntitySet="Flight" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flights2Airports_AirportInfo" Association="FlightsModel.Store.FK_Flights2Airports_AirportInfo">
+      <End Role="AirportInfo" EntitySet="AirportInfo" />
+      <End Role="Flights2Airports" EntitySet="Flights2Airports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flights2Airports_Flight" Association="FlightsModel.Store.FK_Flights2Airports_Flight">
+      <End Role="Flight" EntitySet="Flight" />
+      <End Role="Flights2Airports" EntitySet="Flights2Airports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flights2Members_Flight" Association="FlightsModel.Store.FK_Flights2Members_Flight">
+      <End Role="Flight" EntitySet="Flight" />
+      <End Role="Flights2Members" EntitySet="Flights2Members" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flights2Members_Member" Association="FlightsModel.Store.FK_Flights2Members_Member">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="Flights2Members" EntitySet="Flights2Members" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Aircraft">
+    <Key>
+      <PropertyRef Name="AircraftID" />
+    </Key>
+    <Property Name="AircraftID" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="FirstDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="Length" Type="nvarchar" MaxLength="50" />
+    <Property Name="Height" Type="nvarchar" MaxLength="50" />
+    <Property Name="Wingspan" Type="nvarchar" MaxLength="50" />
+    <Property Name="Diameter" Type="nvarchar" MaxLength="50" />
+    <Property Name="Speed" Type="nvarchar" MaxLength="50" />
+    <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Capacity" Type="nvarchar" MaxLength="8" />
+    <Property Name="Engines" Type="nvarchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="Airline">
+    <Key>
+      <PropertyRef Name="AirlineID" />
+    </Key>
+    <Property Name="AirlineID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="AirlineCountry" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Website" Type="nvarchar" MaxLength="50" />
+    <Property Name="OnlineCheckIN" Type="nvarchar" MaxLength="5" />
+    <Property Name="HotelBooking" Type="nvarchar" MaxLength="5" />
+    <Property Name="CarRental" Type="nvarchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="AirportInfo">
+    <Key>
+      <PropertyRef Name="AirportID" />
+    </Key>
+    <Property Name="AirportID" Type="int" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="AirportPhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fax" Type="nchar" MaxLength="10" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Street" Type="nvarchar" MaxLength="50" />
+    <Property Name="Postalcode" Type="nvarchar" MaxLength="50" />
+    <Property Name="AirportWebsite" Type="nvarchar" MaxLength="50" />
+    <Property Name="Airport" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Flight">
+    <Key>
+      <PropertyRef Name="FlightID" />
+    </Key>
+    <Property Name="FlightID" Type="int" Nullable="false" />
+    <Property Name="Date" Type="nvarchar" MaxLength="50" />
+    <Property Name="FlightNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="DepTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="ArrvTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="GroundOp" Type="nvarchar" MaxLength="50" />
+    <Property Name="AirlineID" Type="int" Nullable="false" />
+    <Property Name="AircraftID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Flights2Airports">
+    <Key>
+      <PropertyRef Name="FlightID" />
+      <PropertyRef Name="AirportID" />
+    </Key>
+    <Property Name="FlightID" Type="int" Nullable="false" />
+    <Property Name="AirportID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Flights2Members">
+    <Key>
+      <PropertyRef Name="FlightID" />
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="FlightID" Type="int" Nullable="false" />
+    <Property Name="MemberID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="MemberID" Type="int" Nullable="false" />
+    <Property Name="MemberName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Position" Type="nvarchar" MaxLength="50" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="Age" Type="nvarchar" MaxLength="50" />
+    <Property Name="Years" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Flight_Aircraft">
+    <End Role="Aircraft" Type="FlightsModel.Store.Aircraft" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Flight" Type="FlightsModel.Store.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aircraft">
+        <PropertyRef Name="AircraftID" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="AircraftID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flight_Airline">
+    <End Role="Airline" Type="FlightsModel.Store.Airline" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Flight" Type="FlightsModel.Store.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Airline">
+        <PropertyRef Name="AirlineID" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="AirlineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flights2Airports_AirportInfo">
+    <End Role="AirportInfo" Type="FlightsModel.Store.AirportInfo" Multiplicity="1" />
+    <End Role="Flights2Airports" Type="FlightsModel.Store.Flights2Airports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AirportInfo">
+        <PropertyRef Name="AirportID" />
+      </Principal>
+      <Dependent Role="Flights2Airports">
+        <PropertyRef Name="AirportID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flights2Airports_Flight">
+    <End Role="Flight" Type="FlightsModel.Store.Flight" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Flights2Airports" Type="FlightsModel.Store.Flights2Airports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight">
+        <PropertyRef Name="FlightID" />
+      </Principal>
+      <Dependent Role="Flights2Airports">
+        <PropertyRef Name="FlightID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flights2Members_Flight">
+    <End Role="Flight" Type="FlightsModel.Store.Flight" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Flights2Members" Type="FlightsModel.Store.Flights2Members" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight">
+        <PropertyRef Name="FlightID" />
+      </Principal>
+      <Dependent Role="Flights2Members">
+        <PropertyRef Name="FlightID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flights2Members_Member">
+    <End Role="Member" Type="FlightsModel.Store.Member" Multiplicity="1" />
+    <End Role="Flights2Members" Type="FlightsModel.Store.Flights2Members" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="Flights2Members">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

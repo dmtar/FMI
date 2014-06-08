@@ -86,8 +86,8 @@ namespace Flights_Service.App_Code
                     MemberName = member.Element(FlightElements.FLIGHT_MEMBER_MEMBERNAME).Value,
                     Position = member.Attribute(FlightElements.FLIGHT_MEMBER_POSITION).Value,
                     Country = member.Element(FlightElements.FLIGHT_MEMBER_COUNTRY).Value,
-                    Age = Int16.Parse(member.Element(FlightElements.FLIGHT_MEMBER_AGE).Value),
-                    Years = Int16.Parse(member.Element(FlightElements.FLIGHT_MEMBER_YEARS).Value)
+                    Age = member.Element(FlightElements.FLIGHT_MEMBER_AGE).Value,
+                    Years = member.Element(FlightElements.FLIGHT_MEMBER_YEARS).Value
                 }); 
             }
             flight.Members = membersCollection;

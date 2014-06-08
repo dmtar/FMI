@@ -2,7 +2,7 @@
 <!DOCTYPE Flight SYSTEM "Flights.dtd">
 <Flight>
   <FlightID>123</FlightID>
-  <Date />
+  <Date>123</Date>
   <DepTime>123</DepTime>
   <ArrvTime>123</ArrvTime>
   <GroundOp>123</GroundOp>
@@ -11,45 +11,45 @@
     <Name>123</Name>
     <AirlineCountry>123</AirlineCountry>
     <Phone>123</Phone>
-    <Website OnlineCheckIN="да" HotelBooking="да" CarRental="не" />
+    <Website OnlineCheckIN="не" HotelBooking="да" CarRental="не" />
   </Airline>
   <Aircraft Type="123" Capacity="123" Engines="123">
     <AircraftID>123</AircraftID>
-    <Description>123</Description>
-    <FirstDate>123</FirstDate>
-    <Length>123</Length>
-    <Height>123</Height>
-    <Wingspan>123</Wingspan>
-    <Diameter>123</Diameter>
-    <Speed>123</Speed>
-    <Manufacturer>123</Manufacturer>
+    <Description></Description>
+    <FirstDate></FirstDate>
+    <Length></Length>
+    <Height></Height>
+    <Wingspan></Wingspan>
+    <Diameter></Diameter>
+    <Speed></Speed>
+    <Manufacturer></Manufacturer>
   </Aircraft>
   <AirportInfo Airport="кацане">
     <AirportID>123</AirportID>
     <Code>123</Code>
-    <AirportPhone Type="123" Fax="не">123</AirportPhone>
+    <AirportPhone Type="" Fax="не"></AirportPhone>
     <Address>
-      <City>123</City>
-      <Street>123</Street>
-      <Postalcode>123</Postalcode>
-      <AirportWebsite>123</AirportWebsite>
+      <City></City>
+      <Street></Street>
+      <Postalcode></Postalcode>
+      <AirportWebsite></AirportWebsite>
     </Address>
   </AirportInfo>
   <AirportInfo Airport="излитане">
-    <AirportID>123</AirportID>
-    <Code>123</Code>
-    <AirportPhone Type="123" Fax="не">123</AirportPhone>
+    <AirportID>321</AirportID>
+    <Code>321</Code>
+    <AirportPhone Type="" Fax="не"></AirportPhone>
     <Address>
-      <City>123</City>
-      <Street>123</Street>
-      <Postalcode>123</Postalcode>
-      <AirportWebsite>1234</AirportWebsite>
+      <City></City>
+      <Street></Street>
+      <Postalcode></Postalcode>
+      <AirportWebsite></AirportWebsite>
     </Address>
   </AirportInfo>
-  <Member MemberID="123">
-    <MemberName>123</MemberName>
-    <Country>123</Country>
-    <Age>123</Age>
-    <Years>123</Years>
+  <Member MemberID="33">
+    <MemberName>33333</MemberName>
+    <Country></Country>
+    <Age></Age>
+    <Years></Years>
   </Member>
 </Flight>

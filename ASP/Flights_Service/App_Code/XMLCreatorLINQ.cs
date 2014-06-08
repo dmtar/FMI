@@ -18,13 +18,17 @@ namespace Flights_Service.App_Code
             XElement root = new XElement(FlightElements.ROOT_ELEMENT);
             XElement FlightID = new XElement(FlightElements.FLIGHT_ID, flight.FlightID);
             XElement Date = new XElement(FlightElements.FLIGHT_DATE, flight.Date);
+            XElement FlightNumber = new XElement(FlightElements.FLIGHT_NUMBER, flight.FlightNumber);
             XElement DepTime = new XElement(FlightElements.FLIGHT_DEPTIME, flight.DepTime);
             XElement ArrvTime = new XElement(FlightElements.FLIGHT_ARRVTIME, flight.ArrvTime);
+            XElement Status = new XElement(FlightElements.FLIGHT_STATUS, flight.Status);
             XElement GroundOp = new XElement(FlightElements.FLIGHT_GROUNDOP, flight.GroundOp);
             root.Add(FlightID);
             root.Add(Date);
+            root.Add(FlightNumber);
             root.Add(DepTime);
             root.Add(ArrvTime);
+            root.Add(Status);
             root.Add(GroundOp);
             //Airline
             XElement Airline = new XElement(FlightElements.FLIGHT_AIRLINE);
@@ -108,7 +112,8 @@ namespace Flights_Service.App_Code
             foreach (var userMember in flight.Members)
             {
                 XElement Member = new XElement(FlightElements.FLIGHT_MEMBER);
-                Member.Add(new XAttribute(FlightElements.FLIGHT_MEMBER_MEMBERID, userMember.MemberID));
+                Member.Add(new XAttribute(FlightElements.FLIGHT_MEMBER_POSITION, userMember.Position));
+                Member.Add(new XElement(FlightElements.FLIGHT_MEMBER_MEMBERID, userMember.MemberID));
                 Member.Add(new XElement(FlightElements.FLIGHT_MEMBER_MEMBERNAME, userMember.MemberName));
                 Member.Add(new XElement(FlightElements.FLIGHT_MEMBER_COUNTRY, userMember.Country));
                 Member.Add(new XElement(FlightElements.FLIGHT_MEMBER_AGE, userMember.Age));
