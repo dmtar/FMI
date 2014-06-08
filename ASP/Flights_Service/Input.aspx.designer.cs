@@ -22,6 +22,15 @@ namespace Flights_Service {
         protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
         
         /// <summary>
+        /// DivSuccess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivSuccess;
+        
+        /// <summary>
         /// DivForm control.
         /// </summary>
         /// <remarks>
@@ -40,13 +49,13 @@ namespace Flights_Service {
         protected global::System.Web.UI.WebControls.Label FlightIDLabel;
         
         /// <summary>
-        /// IDInput control.
+        /// FlightID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox IDInput;
+        protected global::System.Web.UI.WebControls.TextBox FlightID;
         
         /// <summary>
         /// RequiredFieldValidator1 control.
@@ -76,13 +85,13 @@ namespace Flights_Service {
         protected global::System.Web.UI.WebControls.Label FlightDateLabel;
         
         /// <summary>
-        /// DateInput control.
+        /// Date control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox DateInput;
+        protected global::System.Web.UI.WebControls.TextBox Date;
         
         /// <summary>
         /// RequiredFieldValidator2 control.
@@ -94,15 +103,6 @@ namespace Flights_Service {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
         
         /// <summary>
-        /// valDateRange control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator valDateRange;
-        
-        /// <summary>
         /// FlightNumberLabel control.
         /// </summary>
         /// <remarks>
@@ -112,13 +112,13 @@ namespace Flights_Service {
         protected global::System.Web.UI.WebControls.Label FlightNumberLabel;
         
         /// <summary>
-        /// NumberInput control.
+        /// FlightNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox NumberInput;
+        protected global::System.Web.UI.WebControls.TextBox FlightNumber;
         
         /// <summary>
         /// RequiredFieldValidator3 control.
@@ -130,22 +130,22 @@ namespace Flights_Service {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
         
         /// <summary>
-        /// DeptTimeLabel control.
+        /// DepTimeLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label DeptTimeLabel;
+        protected global::System.Web.UI.WebControls.Label DepTimeLabel;
         
         /// <summary>
-        /// DeptTime control.
+        /// DepTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox DeptTime;
+        protected global::System.Web.UI.WebControls.TextBox DepTime;
         
         /// <summary>
         /// RequiredFieldValidator4 control.
@@ -155,15 +155,6 @@ namespace Flights_Service {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
-        
-        /// <summary>
-        /// DeptTimeCV control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator DeptTimeCV;
         
         /// <summary>
         /// ArrvTimeLabel control.
@@ -193,15 +184,6 @@ namespace Flights_Service {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
         
         /// <summary>
-        /// ArrvTimeCV control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator ArrvTimeCV;
-        
-        /// <summary>
         /// StatusLabel control.
         /// </summary>
         /// <remarks>
@@ -220,15 +202,6 @@ namespace Flights_Service {
         protected global::System.Web.UI.WebControls.TextBox Status;
         
         /// <summary>
-        /// RequiredFieldValidator6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
-        
-        /// <summary>
         /// GroundOpLabel control.
         /// </summary>
         /// <remarks>
@@ -245,15 +218,6 @@ namespace Flights_Service {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox GroundOp;
-        
-        /// <summary>
-        /// RequiredFieldValidator7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
         
         /// <summary>
         /// AirlineIDLabel control.
@@ -337,15 +301,6 @@ namespace Flights_Service {
         protected global::System.Web.UI.WebControls.TextBox AirlineCountry;
         
         /// <summary>
-        /// RequiredFieldValidator10 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator10;
-        
-        /// <summary>
         /// AirlinePhoneLabel control.
         /// </summary>
         /// <remarks>
@@ -364,15 +319,6 @@ namespace Flights_Service {
         protected global::System.Web.UI.WebControls.TextBox AirlinePhone;
         
         /// <summary>
-        /// RequiredFieldValidator11 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator11;
-        
-        /// <summary>
         /// AirlineWebsiteLabel control.
         /// </summary>
         /// <remarks>
@@ -389,15 +335,6 @@ namespace Flights_Service {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox AirlineWebsite;
-        
-        /// <summary>
-        /// RequiredFieldValidator12 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator12;
         
         /// <summary>
         /// OnlineCheckINLabel control.
@@ -508,15 +445,6 @@ namespace Flights_Service {
         protected global::System.Web.UI.WebControls.TextBox Description;
         
         /// <summary>
-        /// RequiredFieldValidator14 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator14;
-        
-        /// <summary>
         /// FirstDateLabel control.
         /// </summary>
         /// <remarks>
@@ -533,24 +461,6 @@ namespace Flights_Service {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox FirstDate;
-        
-        /// <summary>
-        /// RequiredFieldValidator15 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator15;
-        
-        /// <summary>
-        /// FirstDateCV control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator FirstDateCV;
         
         /// <summary>
         /// LengthLabel control.
@@ -571,15 +481,6 @@ namespace Flights_Service {
         protected global::System.Web.UI.WebControls.TextBox Length;
         
         /// <summary>
-        /// CustomValidator2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator2;
-        
-        /// <summary>
         /// HeightLabel control.
         /// </summary>
         /// <remarks>
@@ -596,15 +497,6 @@ namespace Flights_Service {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Height;
-        
-        /// <summary>
-        /// CustomValidator3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator3;
         
         /// <summary>
         /// WingspanLabel control.
@@ -625,15 +517,6 @@ namespace Flights_Service {
         protected global::System.Web.UI.WebControls.TextBox Wingspan;
         
         /// <summary>
-        /// CustomValidator4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator4;
-        
-        /// <summary>
         /// DiameterLabel control.
         /// </summary>
         /// <remarks>
@@ -650,15 +533,6 @@ namespace Flights_Service {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Diameter;
-        
-        /// <summary>
-        /// CustomValidator5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator5;
         
         /// <summary>
         /// SpeedLabel control.
@@ -679,15 +553,6 @@ namespace Flights_Service {
         protected global::System.Web.UI.WebControls.TextBox Speed;
         
         /// <summary>
-        /// CustomValidator6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator6;
-        
-        /// <summary>
         /// ManufacturerLabel control.
         /// </summary>
         /// <remarks>
@@ -704,15 +569,6 @@ namespace Flights_Service {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Manufacturer;
-        
-        /// <summary>
-        /// RequiredFieldValidator16 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator16;
         
         /// <summary>
         /// TypeLabel control.

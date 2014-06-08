@@ -5,26 +5,31 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID="body" runat="server" >
 <asp:LinkButton ID="LinkButton1" Text="Назад" runat="server" PostBackUrl="~/Default.aspx" CausesValidation="false" />
+    <div runat="server" id="DivSuccess" visible="false">
+        <p style="color: Blue">
+            Операцията завърши успешно!
+        </p>
+    </div>
 <div runat="server" id="DivForm">
         <fieldset>
         <legend>Полет</legend>
         <table>
             <tr>
                 <td>
-                    <asp:Label ID="FlightIDLabel" runat="server" AssociatedControlID="IDInput">ID на полета: *</asp:Label>
+                    <asp:Label ID="FlightIDLabel" runat="server" AssociatedControlID="FlightID">ID на полета: *</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox runat="server" ID="IDInput" />
+                    <asp:TextBox runat="server" ID="FlightID" />
                     <asp:RequiredFieldValidator 
                         ID="RequiredFieldValidator1" 
                         ErrorMessage="* Задължително поле" 
-                        ControlToValidate="IDInput"
+                        ControlToValidate="FlightID"
                         ForeColor="Red" 
                         Display="Dynamic" 
                         runat="server" />
                     <asp:CustomValidator 
                         ID="CustomValidatorFlightID" 
-                        ControlToValidate="IDInput"
+                        ControlToValidate="FlightID"
                         Display="Dynamic" 
                         ForeColor="Red" 
                         OnServerValidate="ValidateFlightID" 
@@ -33,36 +38,29 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="FlightDateLabel" runat="server" AssociatedControlID="DateInput">Дата на полета: *</asp:Label>
+                    <asp:Label ID="FlightDateLabel" runat="server" AssociatedControlID="Date">Дата на полета: *</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox runat="server" ID="DateInput" />
+                    <asp:TextBox runat="server" ID="Date" />
                     <asp:RequiredFieldValidator 
                         ID="RequiredFieldValidator2" 
                         ErrorMessage="* Задължително поле" 
-                        ControlToValidate="DateInput"
+                        ControlToValidate="Date"
                         ForeColor="Red" 
                         Display="Dynamic" 
                         runat="server" />
-                    <asp:CustomValidator 
-                        runat="server"
-                        ID="valDateRange" 
-                        ControlToValidate="DateInput"
-                        onservervalidate="valDateRange_ServerValidate" 
-                        ForeColor="Red" 
-                        ErrorMessage="Въведете коректна дата" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="FlightNumberLabel" runat="server" AssociatedControlID="NumberInput">Номер на полета: *</asp:Label>
+                    <asp:Label ID="FlightNumberLabel" runat="server" AssociatedControlID="FlightNumber">Номер на полета: *</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox runat="server" ID="NumberInput" />
+                    <asp:TextBox runat="server" ID="FlightNumber" />
                     <asp:RequiredFieldValidator 
                         ID="RequiredFieldValidator3" 
                         ErrorMessage="* Задължително поле" 
-                        ControlToValidate="NumberInput"
+                        ControlToValidate="FlightNumber"
                         ForeColor="Red" 
                         Display="Dynamic" 
                         runat="server" />
@@ -70,23 +68,16 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="DeptTimeLabel" runat="server" AssociatedControlID="DeptTime">Час на излитане: *</asp:Label>
+                    <asp:Label ID="DepTimeLabel" runat="server" AssociatedControlID="DepTime">Час на излитане: *</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox runat="server" ID="DeptTime" />
+                    <asp:TextBox runat="server" ID="DepTime" />
                     <asp:RequiredFieldValidator 
                         ID="RequiredFieldValidator4" 
                         ErrorMessage="* Задължително поле" 
-                        ControlToValidate="DeptTime"
+                        ControlToValidate="DepTime"
                         ForeColor="Red" 
                         Display="Dynamic" 
-                        runat="server" />
-                    <asp:CustomValidator 
-                        ID="DeptTimeCV"
-                        ControlToValidate="DeptTime"
-                        Display="Dynamic" 
-                        ForeColor="Red" 
-                        OnServerValidate="ValidateTime" 
                         runat="server" />
                 </td>
             </tr>
@@ -103,13 +94,6 @@
                         ForeColor="Red" 
                         Display="Dynamic" 
                         runat="server" />
-                    <asp:CustomValidator 
-                        ID="ArrvTimeCV"
-                        ControlToValidate="ArrvTime"
-                        Display="Dynamic" 
-                        ForeColor="Red" 
-                        OnServerValidate="ValidateTime" 
-                        runat="server" />
                 </td>
             </tr>
             <tr>
@@ -118,13 +102,6 @@
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="Status" />
-                    <asp:RequiredFieldValidator 
-                        ID="RequiredFieldValidator6" 
-                        ErrorMessage="* Задължително поле" 
-                        ControlToValidate="Status"
-                        ForeColor="Red" 
-                        Display="Dynamic" 
-                        runat="server" />
                 </td>
             </tr>
             <tr>
@@ -133,13 +110,6 @@
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="GroundOp" />
-                    <asp:RequiredFieldValidator 
-                        ID="RequiredFieldValidator7" 
-                        ErrorMessage="* Задължително поле" 
-                        ControlToValidate="GroundOp"
-                        ForeColor="Red" 
-                        Display="Dynamic" 
-                        runat="server" />
                 </td>
             </tr>
         </table>
@@ -190,13 +160,6 @@
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="AirlineCountry" />
-                    <asp:RequiredFieldValidator 
-                        ID="RequiredFieldValidator10" 
-                        ErrorMessage="* Задължително поле" 
-                        ControlToValidate="AirlineCountry"
-                        ForeColor="Red" 
-                        Display="Dynamic" 
-                        runat="server" />
                 </td>
             </tr>
              <tr>
@@ -205,13 +168,6 @@
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="AirlinePhone" />
-                    <asp:RequiredFieldValidator 
-                        ID="RequiredFieldValidator11" 
-                        ErrorMessage="* Задължително поле" 
-                        ControlToValidate="AirlinePhone"
-                        ForeColor="Red" 
-                        Display="Dynamic" 
-                        runat="server" />
                 </td>
             </tr>
              <tr>
@@ -220,13 +176,6 @@
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="AirlineWebsite" />
-                    <asp:RequiredFieldValidator 
-                        ID="RequiredFieldValidator12" 
-                        ErrorMessage="* Задължително поле" 
-                        ControlToValidate="AirlineWebsite"
-                        ForeColor="Red" 
-                        Display="Dynamic" 
-                        runat="server" />
                 </td>
             </tr>
             <tr>
@@ -286,13 +235,6 @@
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="Description" rows="5" TextMode="multiline" />
-                    <asp:RequiredFieldValidator 
-                        ID="RequiredFieldValidator14" 
-                        ErrorMessage="* Задължително поле" 
-                        ControlToValidate="Description"
-                        ForeColor="Red" 
-                        Display="Dynamic" 
-                        runat="server" />
                 </td>
             </tr>
             <tr>
@@ -301,20 +243,6 @@
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="FirstDate" />
-                    <asp:RequiredFieldValidator 
-                        ID="RequiredFieldValidator15" 
-                        ErrorMessage="* Задължително поле" 
-                        ControlToValidate="FirstDate"
-                        ForeColor="Red" 
-                        Display="Dynamic" 
-                        runat="server" />
-                    <asp:CustomValidator 
-                        ID="FirstDateCV" 
-                        ControlToValidate="FirstDate"
-                        onservervalidate="valDateRange_ServerValidate" 
-                        ForeColor="Red" 
-                        ErrorMessage="Въведете коректна дата"
-                        runat="server" />
                 </td>
             </tr>
             <tr>
@@ -323,13 +251,6 @@
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="Length" />
-                    <asp:CustomValidator 
-                        ID="CustomValidator2" 
-                        ControlToValidate="Length"
-                        onservervalidate="ValidateDecimal" 
-                        ForeColor="Red" 
-                        ErrorMessage="Число от вида 12.34"
-                        runat="server" />
                 </td>
             </tr>
             <tr>
@@ -338,13 +259,6 @@
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="Height" />
-                    <asp:CustomValidator 
-                        ID="CustomValidator3" 
-                        ControlToValidate="Height"
-                        onservervalidate="ValidateDecimal" 
-                        ForeColor="Red" 
-                        ErrorMessage="Число от вида 12.34"
-                        runat="server" />
                 </td>
             </tr>
             <tr>
@@ -353,13 +267,6 @@
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="Wingspan" />
-                    <asp:CustomValidator 
-                        ID="CustomValidator4" 
-                        ControlToValidate="Wingspan"
-                        onservervalidate="ValidateDecimal" 
-                        ForeColor="Red" 
-                        ErrorMessage="Число от вида 12.34"
-                        runat="server" />
                 </td>
             </tr>
             <tr>
@@ -368,13 +275,6 @@
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="Diameter" />
-                    <asp:CustomValidator 
-                        ID="CustomValidator5" 
-                        ControlToValidate="Diameter"
-                        onservervalidate="ValidateDecimal" 
-                        ForeColor="Red" 
-                        ErrorMessage="Число от вида 12.34"
-                        runat="server" />
                 </td>
             </tr>
             <tr>
@@ -383,13 +283,6 @@
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="Speed" />
-                    <asp:CustomValidator 
-                        ID="CustomValidator6" 
-                        ControlToValidate="Speed"
-                        onservervalidate="ValidateDecimal" 
-                        ForeColor="Red" 
-                        ErrorMessage="Число от вида 12.34"
-                        runat="server" />
                 </td>
             </tr>
             <tr>
@@ -398,13 +291,6 @@
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="Manufacturer" />
-                    <asp:RequiredFieldValidator 
-                        ID="RequiredFieldValidator16" 
-                        ErrorMessage="* Задължително поле" 
-                        ControlToValidate="Manufacturer"
-                        ForeColor="Red" 
-                        Display="Dynamic" 
-                        runat="server" />
                 </td>
             </tr>
             <tr>

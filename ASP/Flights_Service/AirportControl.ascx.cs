@@ -18,12 +18,12 @@ namespace Flights_Service
             get
             {
                 object o = ViewState["Code"];
-                return (o == null) ? this.CodeInput.Text.Trim() : o.ToString().Trim();
+                return (o == null) ? this.AirportCode.Text.Trim() : o.ToString().Trim();
             }
             set
             {
-                this.CodeInput.Text = value.Trim();
-                ViewState["Code"] = this.CodeInput.Text.Trim();
+                this.AirportCode.Text = value.Trim();
+                ViewState["Code"] = this.AirportCode.Text.Trim();
             }
         }
         public string AirportPhone
@@ -57,12 +57,12 @@ namespace Flights_Service
             get
             {
                 object o = ViewState["Fax"];
-                return (o == null) ? this.PhoneFax.Text.Trim() : o.ToString().Trim();
+                return (o == null) ? this.AirportPhoneFax.Text.Trim() : o.ToString().Trim();
             }
             set
             {
-                this.PhoneFax.Text = value.Trim();
-                ViewState["Fax"] = this.PhoneFax.Text.Trim();
+                this.AirportPhoneFax.Text = value.Trim();
+                ViewState["Fax"] = this.AirportPhoneFax.Text.Trim();
             }
         }
         public string City

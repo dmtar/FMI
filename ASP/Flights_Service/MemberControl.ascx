@@ -2,6 +2,16 @@
 <table style="width:500px">
     <tr>
         <td>
+            <asp:Label ID="MemberIDLabel" Text="ID: *" runat="server" AssociatedControlID="MemberID" />
+        </td>
+        <td>
+            <asp:TextBox runat="server" ID="MemberID" MaxLength="10" />
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ErrorMessage="* Задължително поле" ControlToValidate="MemberID"
+                Display="Dynamic" ForeColor="Red" runat="server" />
+        </td>
+    </tr>
+    <tr>
+        <td>
             <asp:Label ID="MemberNameLabel" Text="Име: *" runat="server" AssociatedControlID="MemberNameInput" />
         </td>
         <td>
@@ -39,22 +49,18 @@
     </tr>
     <tr>
         <td>
-            <asp:Label ID="MemberCountryLabel" Text="Държава: *" runat="server" AssociatedControlID="MemberCountry" />
+            <asp:Label ID="MemberCountryLabel" Text="Държава: " runat="server" AssociatedControlID="MemberCountry" />
         </td>
         <td>
             <asp:TextBox runat="server" ID="MemberCountry" />
-            <asp:RequiredFieldValidator ID="MemberCountryRFV" ErrorMessage="* Задължително поле" ControlToValidate="MemberCountry"
-                Display="Dynamic" ForeColor="Red" runat="server" />
         </td>
     </tr>
     <tr>
         <td>
-            <asp:Label ID="MemberAgeLabel" Text="Години: *" runat="server" AssociatedControlID="MemberAge" />
+            <asp:Label ID="MemberAgeLabel" Text="Години: " runat="server" AssociatedControlID="MemberAge" />
         </td>
         <td>
             <asp:TextBox runat="server" ID="MemberAge" />
-            <asp:RequiredFieldValidator ID="MemberAgeRFV" ErrorMessage="* Задължително поле" ControlToValidate="MemberAge"
-                Display="Dynamic" ForeColor="Red" runat="server" />
         </td>
     </tr>
         <tr>

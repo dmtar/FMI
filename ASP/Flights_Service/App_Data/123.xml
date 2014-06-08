@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Flight SYSTEM "Flights.dtd">
+<Flight>
+  <FlightID>123</FlightID>
+  <Date />
+  <DepTime>123</DepTime>
+  <ArrvTime>123</ArrvTime>
+  <GroundOp>123</GroundOp>
+  <Airline>
+    <AirlineID>123</AirlineID>
+    <Name>123</Name>
+    <AirlineCountry>123</AirlineCountry>
+    <Phone>123</Phone>
+    <Website OnlineCheckIN="да" HotelBooking="да" CarRental="не" />
+  </Airline>
+  <Aircraft Type="123" Capacity="123" Engines="123">
+    <AircraftID>123</AircraftID>
+    <Description>123</Description>
+    <FirstDate>123</FirstDate>
+    <Length>123</Length>
+    <Height>123</Height>
+    <Wingspan>123</Wingspan>
+    <Diameter>123</Diameter>
+    <Speed>123</Speed>
+    <Manufacturer>123</Manufacturer>
+  </Aircraft>
+  <AirportInfo Airport="кацане">
+    <AirportID>123</AirportID>
+    <Code>123</Code>
+    <AirportPhone Type="123" Fax="не">123</AirportPhone>
+    <Address>
+      <City>123</City>
+      <Street>123</Street>
+      <Postalcode>123</Postalcode>
+      <AirportWebsite>123</AirportWebsite>
+    </Address>
+  </AirportInfo>
+  <AirportInfo Airport="излитане">
+    <AirportID>123</AirportID>
+    <Code>123</Code>
+    <AirportPhone Type="123" Fax="не">123</AirportPhone>
+    <Address>
+      <City>123</City>
+      <Street>123</Street>
+      <Postalcode>123</Postalcode>
+      <AirportWebsite>1234</AirportWebsite>
+    </Address>
+  </AirportInfo>
+  <Member MemberID="123">
+    <MemberName>123</MemberName>
+    <Country>123</Country>
+    <Age>123</Age>
+    <Years>123</Years>
+  </Member>
+</Flight>

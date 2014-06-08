@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
 using Flights_Service.App_Code;
 using System.IO;
+using System.Collections.Specialized;
 
 namespace Flights_Service
 {
@@ -176,14 +177,52 @@ namespace Flights_Service
 
         protected void ValidateAirlineID(object source, ServerValidateEventArgs args)
         {
-            //TODO: check the ID.
-            args.IsValid = true;
+            string input = args.Value;
+            int AirlineID;
+            if (int.TryParse(input, out AirlineID))
+            {
+                FlightsEntities context = new FlightsEntities();
+                var airlinesIDs =
+                    from airline in context.Airlines
+                    select airline.AirlineID;
+                if (!airlinesIDs.Any(airline => airline == AirlineID))
+                    args.IsValid = true;
+                else
+                {
+                    CustomValidatorFlightID.ErrorMessage = "* Съществуващо ID";
+                    args.IsValid = false;
+                }
+            }
+            else
+            {
+                CustomValidatorFlightID.ErrorMessage = "* Невалидно ID";
+                args.IsValid = false;
+            }
         }
 
         protected void ValidateAircraftID(object source, ServerValidateEventArgs args)
         {
-            //TODO: check the ID.
-            args.IsValid = true;
+            string input = args.Value;
+            int AircraftID;
+            if (int.TryParse(input, out AircraftID))
+            {
+                FlightsEntities context = new FlightsEntities();
+                var aircraftsIDs =
+                    from aircraft in context.Aircraft
+                    select aircraft.AircraftID;
+                if (!aircraftsIDs.Any(aircraft => aircraft == AircraftID))
+                    args.IsValid = true;
+                else
+                {
+                    CustomValidatorFlightID.ErrorMessage = "* Съществуващо ID";
+                    args.IsValid = false;
+                }
+            }
+            else
+            {
+                CustomValidatorFlightID.ErrorMessage = "* Невалидно ID";
+                args.IsValid = false;
+            }
         }
 
         protected void ValidateFlightID(object source, ServerValidateEventArgs args)
@@ -242,7 +281,82 @@ namespace Flights_Service
 
         protected void BtnSubmit_Click(object source, System.EventArgs args)
         {
-            //TODO: export the form data to the database.
+            if (Page.IsValid)
+            {
+                
+                XMLCreatorLINQ creator = new XMLCreatorLINQ();
+                FlightsEntities flightContext = new FlightsEntities();
+                Flight flight = new Flight();
+                flight.FlightID = Int16.Parse(Request.Form["ctl00$body$FlightID"]);
+                flight.FlightNumber = Request.Form["ctl00$body$FlightNumber"];
+                flight.DepTime = Request.Form["ctl00$body$DepTime"];
+                flight.ArrvTime = Request.Form["ctl00$body$ArrvTime"];
+                flight.Status = Request.Form["ctl00$body$Status"];
+                flight.GroundOp = Request.Form["ctl00$body$GroundOp"];
+
+                flight.Airline = new Airline
+                {
+                   AirlineID = Int16.Parse(Request.Form["ctl00$body$AirlineID"]),
+                   Name = Request.Form["ctl00$body$AirlineName"],
+                   AirlineCountry = Request.Form["ctl00$body$AirlineCountry"],
+                   Phone = Request.Form["ctl00$body$AirlinePhone"],
+                   Website = Request.Form["ctl00$body$AirlineWebsite"],
+                   OnlineCheckIN = Request.Form["ctl00$body$OnlineCheckIN"],
+                   HotelBooking = Request.Form["ctl00$body$HotelBooking"],
+                   CarRental = Request.Form["ctl00$body$CarRental"]
+                };
+                flight.Aircraft = new Aircraft
+                {
+                    Type = Request.Form["ctl00$body$Type"],
+                    Capacity = Request.Form["ctl00$body$Capacity"],
+                    Engines = Request.Form["ctl00$body$Engines"],
+                    AircraftID = Int16.Parse(Request.Form["ctl00$body$AircraftID"]),
+                    Description = Request.Form["ctl00$body$Description"],
+                    FirstDate = Request.Form["ctl00$body$FirstDate"],
+                    Length = Request.Form["ctl00$body$Length"],
+                    Height = Request.Form["ctl00$body$Height"],
+                    Wingspan = Request.Form["ctl00$body$Wingspan"],
+                    Diameter = Request.Form["ctl00$body$Diameter"],
+                    Speed = Request.Form["ctl00$body$Speed"],
+                    Manufacturer = Request.Form["ctl00$body$Manufacturer"]
+                };
+
+                AirportInfo airportInfo;
+                for (int i = 0; i < airportsCount; i++)
+                {
+                    airportInfo = new AirportInfo();
+                    airportInfo.Airport = Request.Form["ctl00$body$airport" + (i + 1) + "$AirportDropDown"];
+                    airportInfo.AirportID = Int16.Parse(Request.Form["ctl00$body$airport" + (i + 1) + "$AirportID"]);
+                    airportInfo.Code = Request.Form["ctl00$body$airport" + (i + 1) + "$AirportCode"];
+                    airportInfo.AirportPhone = Request.Form["ctl00$body$airport" + (i + 1) + "$AirportPhoneInput"];
+                    airportInfo.Type = Request.Form["ctl00$body$airport" + (i + 1) + "$AirportPhoneType"];
+                    airportInfo.Fax = Request.Form["ctl00$body$airport" + (i + 1) + "$AirportPhoneFax"];
+                    airportInfo.City = Request.Form["ctl00$body$airport" + (i + 1) + "$AirportCity"];
+                    airportInfo.Street = Request.Form["ctl00$body$airport" + (i + 1) + "$AirportStreet"];
+                    airportInfo.Postalcode = Request.Form["ctl00$body$airport" + (i + 1) + "$AirportPostalcode"];
+                    airportInfo.AirportWebsite = Request.Form["ctl00$body$airport" + (i + 1) + "$AirportWebsiteInput"];
+                    flight.AirportInfoes.Add(airportInfo);
+                }
+
+                Member member;
+                for (int i = 0; i < membersCount; i++)
+                {
+                    member = new Member();
+                    member.Position = Request.Form["ctl00$body$member" + (i + 1) + "$MemberPosition"];
+                    member.MemberID = Int16.Parse(Request.Form["ctl00$body$member" + (i + 1) + "$MemberID"]);
+                    member.MemberName = Request.Form["ctl00$body$member" + (i + 1) + "$MemberNameInput"];
+                    member.Country = Request.Form["ctl00$body$member" + (i + 1) + "$MemberCountry"];
+                    member.Age = Int16.Parse(Request.Form["ctl00$body$member" + (i + 1) + "$MemberAge"]);
+                    member.Years = Int16.Parse(Request.Form["ctl00$body$member" + (i + 1) + "$MemberYears"]);
+                    flight.Members.Add(member);
+                }
+                creator.CreateFlightXMLDocument(Server.MapPath("~/App_Data/" + flight.FlightID + ".xml"),"Flights.dtd", flight);
+
+                flightContext.Flights.AddObject(flight);
+                flightContext.SaveChanges();
+                DivForm.Visible = false;
+                DivSuccess.Visible = true;
+            }
         }
 
     }

@@ -13,6 +13,33 @@ namespace Flights_Service {
     public partial class AirportControl {
         
         /// <summary>
+        /// AirportIDLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label AirportIDLabel;
+        
+        /// <summary>
+        /// AirportID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox AirportID;
+        
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        
+        /// <summary>
         /// CodeLabel control.
         /// </summary>
         /// <remarks>
@@ -22,13 +49,13 @@ namespace Flights_Service {
         protected global::System.Web.UI.WebControls.Label CodeLabel;
         
         /// <summary>
-        /// CodeInput control.
+        /// AirportCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CodeInput;
+        protected global::System.Web.UI.WebControls.TextBox AirportCode;
         
         /// <summary>
         /// CodeRFV control.
@@ -58,15 +85,6 @@ namespace Flights_Service {
         protected global::System.Web.UI.WebControls.TextBox AirportPhoneInput;
         
         /// <summary>
-        /// AirportPhoneRFV control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator AirportPhoneRFV;
-        
-        /// <summary>
         /// AirportPhoneTypeLabel control.
         /// </summary>
         /// <remarks>
@@ -94,13 +112,13 @@ namespace Flights_Service {
         protected global::System.Web.UI.WebControls.Label PhoneFaxLabel;
         
         /// <summary>
-        /// PhoneFax control.
+        /// AirportPhoneFax control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox PhoneFax;
+        protected global::System.Web.UI.WebControls.CheckBox AirportPhoneFax;
         
         /// <summary>
         /// CityLabe control.
@@ -121,15 +139,6 @@ namespace Flights_Service {
         protected global::System.Web.UI.WebControls.TextBox AirportCity;
         
         /// <summary>
-        /// AirportCityRFV control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator AirportCityRFV;
-        
-        /// <summary>
         /// AirportStreetLabel control.
         /// </summary>
         /// <remarks>
@@ -146,15 +155,6 @@ namespace Flights_Service {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox AirportStreet;
-        
-        /// <summary>
-        /// AirportStreetRFV control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator AirportStreetRFV;
         
         /// <summary>
         /// AirportPostalcodeLabel control.
@@ -175,15 +175,6 @@ namespace Flights_Service {
         protected global::System.Web.UI.WebControls.TextBox AirportPostalcode;
         
         /// <summary>
-        /// AirportPostalcodeRFV control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator AirportPostalcodeRFV;
-        
-        /// <summary>
         /// AirportWebsiteLabel control.
         /// </summary>
         /// <remarks>
@@ -200,15 +191,6 @@ namespace Flights_Service {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox AirportWebsiteInput;
-        
-        /// <summary>
-        /// AirportWebsiteRFV control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator AirportWebsiteRFV;
         
         /// <summary>
         /// AirportDropDownLabel control.

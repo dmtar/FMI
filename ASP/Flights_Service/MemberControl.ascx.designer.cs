@@ -13,6 +13,33 @@ namespace Flights_Service {
     public partial class MemberControl {
         
         /// <summary>
+        /// MemberIDLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MemberIDLabel;
+        
+        /// <summary>
+        /// MemberID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox MemberID;
+        
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        
+        /// <summary>
         /// MemberNameLabel control.
         /// </summary>
         /// <remarks>
@@ -85,15 +112,6 @@ namespace Flights_Service {
         protected global::System.Web.UI.WebControls.TextBox MemberCountry;
         
         /// <summary>
-        /// MemberCountryRFV control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator MemberCountryRFV;
-        
-        /// <summary>
         /// MemberAgeLabel control.
         /// </summary>
         /// <remarks>
@@ -110,15 +128,6 @@ namespace Flights_Service {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox MemberAge;
-        
-        /// <summary>
-        /// MemberAgeRFV control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator MemberAgeRFV;
         
         /// <summary>
         /// MemberYearsLabel control.
