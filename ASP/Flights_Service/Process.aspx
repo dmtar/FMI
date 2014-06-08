@@ -25,35 +25,30 @@
                 </asp:Panel>
             </ContentTemplate>
         </asp:UpdatePanel>
-
         <asp:UpdatePanel runat="server" UpdateMode="Conditional" ID="up2">
             <ContentTemplate>
-                <asp:SqlDataSource
-                    ID="SQLDS" 
-                    runat="server" 
-                    DataSourceMode="DataReader" 
-                    ConnectionString="<%$ConnectionStrings:FlightsConnectionString%>"
-                    SelectCommand="SELECT * FROM Flight" 
-                    UpdateCommand="UPDATE Flight SET FlightNumber=@FlightNumber WHERE FlightID=@FlightID">
+
+                <asp:SqlDataSource runat="server" DataSourceMode="DataReader" ConnectionString="<%$ConnectionStrings:FlightsConnectionString%>"
+                    SelectCommand="Select * from Flight" ID="sqlds" UpdateCommand="update Flight set FlightNumber=@FlightNumber where FlightID=@FlightID">
                 </asp:SqlDataSource>
-                <asp:ListBox ID="ListBox1" runat="server" DataSourceID="SQLDS">
+
+                <asp:ListBox ID="ListBox1" runat="server" DataSourceID="sqlds" DataTextField="FlightNumber">
+
                 </asp:ListBox>
-                <asp:GridView 
-                    ID="GridView1" 
-                    runat="server" 
-                    DataSourceID="SQLDS" 
-                    AutoGenerateEditButton="true"
-                    AutoGenerateColumns="false" 
-                    DataKeyNames="FlightID">
-                    <Columns>
-                        <asp:BoundField HeaderText="Flight Number" DataField="FlightNumber" />
-                        <asp:BoundField HeaderText="Flight ID" DataField="FlightID" />
-                    </Columns>
+                <asp:GridView ID="GridView1" runat="server" DataSourceID="sqlds" AutoGenerateEditButton="true"
+                    AutoGenerateColumns="false" DataKeyNames="FlightNumber">
                 </asp:GridView>
 
-                <asp:Button ID="Button1" Text="Изпразни БД" runat="server" OnClick="TruncateDB" />  
-                           
-            </ContentTemplate>
-        </asp:UpdatePanel>
+                <asp:EntityDataSource ID="EntityDataSource1" runat="server" 
+                    ConnectionString="name=FlightsEntities" 
+                    DefaultContainerName="FlightsEntities" EnableFlattening="False" 
+                    EntitySetName="Flights">
+                </asp:EntityDataSource>
+                <asp:GridView ID="GridView2" runat="server" AllowPaging="True" PageSize="1" 
+                    AutoGenerateColumns="False" DataKeyNames="FlightID" DataSourceID="EntityDataSource1">
+                </asp:GridView>
+            <asp:Button ID="Button1" Text="Изпразни БД" runat="server" OnClick="TruncateDB" />
+     </ContentTemplate>
+     </asp:UpdatePanel> 
     </div>
 </asp:Content>

@@ -28,18 +28,22 @@ namespace Flights_Service
                     try
                     {
                         processor.LoadFile(file);
-                        Flight bs = processor.GetFlight();
+                        Flight flight = processor.GetFlight();
+                      //  AirportInfo airportInfo = processor.GetAirportInfo();
+                     //   Airline airline = processor.GetAirline();
+                      //  Aircraft aircraft = processor.GetAircraft();
+                      //  Member member = processor.GetMember();
                         var bss = from r in context.Flights
                                   select r.FlightID;
-                        if (bss.Any(id => id == bs.FlightID))
+                        if (bss.Any(id => id == flight.FlightID))
                         {
                             LiteralControl lic = new LiteralControl("<p class=\"fail\">" + filesNumber + ". "
-                                + file + " - Полет с ID=" + bs.FlightID + " вече съществува в БД!</p>");
+                                + file + " - Полет с ID=" + flight.FlightID + " вече съществува в БД!</p>");
                             PanelResults.Controls.Add(lic);
                         }
                         else
                         {
-                            context.Flights.AddObject(bs);
+                            context.Flights.AddObject(flight);
                             context.SaveChanges();
                             LiteralControl lic = new LiteralControl("<p class=\"success\">" + filesNumber
                                 + ". " + file + " - Обработен успешно!</p>");
@@ -48,6 +52,7 @@ namespace Flights_Service
                     }
                     catch (Exception ex)
                     {
+                        System.Diagnostics.Debug.Write(ex);
                         LiteralControl lic = new LiteralControl("<p class=\"fail\">" + filesNumber + ". "
                             + file + " - " + ex.Message + " " + ex.InnerException + "</p>");
                         PanelResults.Controls.Add(lic);
@@ -78,8 +83,8 @@ namespace Flights_Service
             }
             con.Close();
 
-            ListBox1.DataBind();
-            GridView1.DataBind();
+            //ListBox1.DataBind();
+           // GridView1.DataBind();
         }
     }
 }

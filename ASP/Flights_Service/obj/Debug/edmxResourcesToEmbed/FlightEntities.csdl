@@ -30,16 +30,16 @@
     </Key>
     <Property Name="AircraftID" Type="Int32" Nullable="false" />
     <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-    <Property Name="FirstDate" Type="DateTime" />
-    <Property Name="Length" Type="Decimal" Precision="9" Scale="2" />
-    <Property Name="Height" Type="Decimal" Precision="9" Scale="2" />
-    <Property Name="Wingspan" Type="Decimal" Precision="9" Scale="2" />
-    <Property Name="Diameter" Type="Decimal" Precision="9" Scale="2" />
-    <Property Name="Speed" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="FirstDate" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Length" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Height" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Wingspan" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Diameter" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Speed" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="Manufacturer" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="Type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="Capacity" Type="Int16" />
-    <Property Name="Engines" Type="Byte" />
+    <Property Name="Capacity" Type="String" MaxLength="8" Unicode="true" FixedLength="false" />
+    <Property Name="Engines" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Flights" Relationship="FlightsModel.FK_Flight_Aircraft" FromRole="Aircraft" ToRole="Flight" />
   </EntityType>
   <EntityType Name="Airline">
@@ -51,9 +51,9 @@
     <Property Name="AirlineCountry" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="Phone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="Website" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="OnlineCheckIN" Type="Boolean" />
-    <Property Name="HotelBooking" Type="Boolean" />
-    <Property Name="CarRental" Type="Boolean" />
+    <Property Name="OnlineCheckIN" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+    <Property Name="HotelBooking" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+    <Property Name="CarRental" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Flights" Relationship="FlightsModel.FK_Flight_Airline" FromRole="Airline" ToRole="Flight" />
   </EntityType>
   <EntityType Name="AirportInfo">
@@ -64,7 +64,7 @@
     <Property Name="Code" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="AirportPhone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="Type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="Fax" Type="Boolean" />
+    <Property Name="Fax" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
     <Property Name="City" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="Street" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="Postalcode" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
@@ -83,8 +83,8 @@
     <Property Name="ArrvTime" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="Status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="GroundOp" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="AirlineID" Type="Int32" />
-    <Property Name="AircraftID" Type="Int32" />
+    <Property Name="AirlineID" Type="Int32" Nullable="false" />
+    <Property Name="AircraftID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Aircraft" Relationship="FlightsModel.FK_Flight_Aircraft" FromRole="Flight" ToRole="Aircraft" />
     <NavigationProperty Name="Airline" Relationship="FlightsModel.FK_Flight_Airline" FromRole="Flight" ToRole="Airline" />
     <NavigationProperty Name="AirportInfoes" Relationship="FlightsModel.Flights2Airports" FromRole="Flight" ToRole="AirportInfo" />
@@ -113,7 +113,9 @@
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <Association Name="FK_Flight_Aircraft">
-    <End Role="Aircraft" Type="FlightsModel.Aircraft" Multiplicity="0..1" />
+    <End Role="Aircraft" Type="FlightsModel.Aircraft" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Flight" Type="FlightsModel.Flight" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Aircraft">
@@ -125,7 +127,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Flight_Airline">
-    <End Role="Airline" Type="FlightsModel.Airline" Multiplicity="0..1" />
+    <End Role="Airline" Type="FlightsModel.Airline" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Flight" Type="FlightsModel.Flight" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Airline">

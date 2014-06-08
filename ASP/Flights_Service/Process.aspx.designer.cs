@@ -58,13 +58,13 @@ namespace Flights_Service {
         protected global::System.Web.UI.UpdatePanel up2;
         
         /// <summary>
-        /// SQLDS control.
+        /// sqlds control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SQLDS;
+        protected global::System.Web.UI.WebControls.SqlDataSource sqlds;
         
         /// <summary>
         /// ListBox1 control.
@@ -83,6 +83,24 @@ namespace Flights_Service {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView1;
+        
+        /// <summary>
+        /// EntityDataSource1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource EntityDataSource1;
+        
+        /// <summary>
+        /// GridView2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView2;
         
         /// <summary>
         /// Button1 control.

@@ -40,16 +40,16 @@
     </Key>
     <Property Name="AircraftID" Type="int" Nullable="false" />
     <Property Name="Description" Type="nvarchar(max)" />
-    <Property Name="FirstDate" Type="datetime" />
-    <Property Name="Length" Type="decimal" Precision="9" Scale="2" />
-    <Property Name="Height" Type="decimal" Precision="9" Scale="2" />
-    <Property Name="Wingspan" Type="decimal" Precision="9" Scale="2" />
-    <Property Name="Diameter" Type="decimal" Precision="9" Scale="2" />
-    <Property Name="Speed" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="FirstDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="Length" Type="nvarchar" MaxLength="50" />
+    <Property Name="Height" Type="nvarchar" MaxLength="50" />
+    <Property Name="Wingspan" Type="nvarchar" MaxLength="50" />
+    <Property Name="Diameter" Type="nvarchar" MaxLength="50" />
+    <Property Name="Speed" Type="nvarchar" MaxLength="50" />
     <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" />
     <Property Name="Type" Type="nvarchar" MaxLength="50" />
-    <Property Name="Capacity" Type="smallint" />
-    <Property Name="Engines" Type="tinyint" />
+    <Property Name="Capacity" Type="nvarchar" MaxLength="8" />
+    <Property Name="Engines" Type="nvarchar" MaxLength="5" />
   </EntityType>
   <EntityType Name="Airline">
     <Key>
@@ -60,9 +60,9 @@
     <Property Name="AirlineCountry" Type="nvarchar" MaxLength="50" />
     <Property Name="Phone" Type="nvarchar" MaxLength="50" />
     <Property Name="Website" Type="nvarchar" MaxLength="50" />
-    <Property Name="OnlineCheckIN" Type="bit" />
-    <Property Name="HotelBooking" Type="bit" />
-    <Property Name="CarRental" Type="bit" />
+    <Property Name="OnlineCheckIN" Type="nvarchar" MaxLength="5" />
+    <Property Name="HotelBooking" Type="nvarchar" MaxLength="5" />
+    <Property Name="CarRental" Type="nvarchar" MaxLength="5" />
   </EntityType>
   <EntityType Name="AirportInfo">
     <Key>
@@ -72,7 +72,7 @@
     <Property Name="Code" Type="nvarchar" MaxLength="50" />
     <Property Name="AirportPhone" Type="nvarchar" MaxLength="50" />
     <Property Name="Type" Type="nvarchar" MaxLength="50" />
-    <Property Name="Fax" Type="bit" />
+    <Property Name="Fax" Type="nchar" MaxLength="10" />
     <Property Name="City" Type="nvarchar" MaxLength="50" />
     <Property Name="Street" Type="nvarchar" MaxLength="50" />
     <Property Name="Postalcode" Type="nvarchar" MaxLength="50" />
@@ -90,8 +90,8 @@
     <Property Name="ArrvTime" Type="nvarchar" MaxLength="50" />
     <Property Name="Status" Type="nvarchar" MaxLength="50" />
     <Property Name="GroundOp" Type="nvarchar" MaxLength="50" />
-    <Property Name="AirlineID" Type="int" />
-    <Property Name="AircraftID" Type="int" />
+    <Property Name="AirlineID" Type="int" Nullable="false" />
+    <Property Name="AircraftID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Flights2Airports">
     <Key>
@@ -131,7 +131,9 @@
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <Association Name="FK_Flight_Aircraft">
-    <End Role="Aircraft" Type="FlightsModel.Store.Aircraft" Multiplicity="0..1" />
+    <End Role="Aircraft" Type="FlightsModel.Store.Aircraft" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Flight" Type="FlightsModel.Store.Flight" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Aircraft">
@@ -143,7 +145,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Flight_Airline">
-    <End Role="Airline" Type="FlightsModel.Store.Airline" Multiplicity="0..1" />
+    <End Role="Airline" Type="FlightsModel.Store.Airline" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Flight" Type="FlightsModel.Store.Flight" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Airline">
@@ -167,7 +171,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Flights2Airports_Flight">
-    <End Role="Flight" Type="FlightsModel.Store.Flight" Multiplicity="1" />
+    <End Role="Flight" Type="FlightsModel.Store.Flight" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Flights2Airports" Type="FlightsModel.Store.Flights2Airports" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Flight">
@@ -179,7 +185,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Flights2Members_Flight">
-    <End Role="Flight" Type="FlightsModel.Store.Flight" Multiplicity="1" />
+    <End Role="Flight" Type="FlightsModel.Store.Flight" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Flights2Members" Type="FlightsModel.Store.Flights2Members" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Flight">

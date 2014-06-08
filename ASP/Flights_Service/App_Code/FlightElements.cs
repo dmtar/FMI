@@ -23,6 +23,7 @@ namespace Flights_Service.App_Code
         public static string FLIGHT_AIRLINE = "Airline";
         public static string FLIGHT_AIRLINE_AIRLINEID = "AirlineID";
         public static string FLIGHT_AIRLINE_NAME = "Name";
+        public static string FLIGHT_AIRLINE_AIRLINECOUNTRY = "AirlineCountry";
         public static string FLIGHT_AIRLINE_PHONE = "Phone";
         public static string FLIGHT_AIRLINE_WEBSITE = "Website";
         public static string FLIGHT_AIRLINE_WEBSITE_ONLINECHECKIN = "OnlineCheckIN";
