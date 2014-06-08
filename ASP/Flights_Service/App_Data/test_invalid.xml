@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Flight SYSTEM "Flights.dtd">
+<Flight>
+    <FlightID>1</FlightID>
+    <Date>2014-1-26</Date>
+    <DepTime>10:00</DepTime>
+    <ArrvTime>11:20</ArrvTime>
+    <Status>Регистрация</Status>
+    <GroundOp>Голдеър Хендлинг България</GroundOp>
+    <Airline>
+        <AirlineID>1</AirlineID>
+        <Name>БългарияЕър</Name>
+        <AirlineCountry>България</AirlineCountry>
+        <Phone>12345</Phone>
+        <Website OnlineCheckIN="да" HotelBooking="да" CarRental="да">www.test.test</Website>
+    </Airline>
+    <Aircraft Type="319" Capacity="76" Engines="2">
+        <AircraftID>1</AircraftID>
+        <Description>Самолет за средни разстояния</Description>
+        <FirstDate>29 Август 1995</FirstDate>
+        <Length>33,84 m</Length>
+        <Height>11,76 m</Height>
+        <Wingspan>34,10 m</Wingspan>
+        <Diameter>3,95 m</Diameter>
+        <Speed>928 km/h</Speed>
+        <Manufacturer>Европейски консорциум</Manufacturer>
+    </Aircraft>
+    <AirportInfo Airport="прекачване">
+        <AirportID>1</AirportID>
+        <Code>FB123</Code>
+        <AirportPhone Type="стационарен" Fax="да">1234</AirportPhone>
+        <Address>
+            <City>Лондон</City>
+            <Street>5 km north of the downtown of Crawley, West Sussex</Street>
+            <Postalcode>RH6 0NP</Postalcode>
+            <AirportWebsite>www.test.com</AirportWebsite>
+        </Address>
+    </AirportInfo>
+    <Member Position="пилот">
+        <MemberID>1</MemberID>
+        <MemberName>Димитър</MemberName>
+        <Country>Дишев</Country>
+        <Age>22</Age>
+        <Years>5</Years>
+    </Member>
+</Flight>

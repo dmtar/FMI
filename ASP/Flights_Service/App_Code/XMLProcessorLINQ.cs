@@ -17,6 +17,8 @@ namespace Flights_Service.App_Code
 
         public void LoadFile(String file)
         {
+            XMLValidator validator = new XMLValidator();
+            validator.Validate(file);
             xFlight = XElement.Load(file);
         }
 

@@ -1,4 +1,4 @@
-<!ELEMENT Flight (FlightID,Date,FlightNumber, DepTime, ArrvTime, Status, GroundOp, Airline, Aircraft, AirportInfo)>
+<!ELEMENT Flight (FlightID, Date, FlightNumber, DepTime, ArrvTime, Status, GroundOp, Airline, Aircraft, AirportInfo+, Member+)>
 <!ELEMENT FlightID (#PCDATA)>
 <!ELEMENT Date (#PCDATA)>
 <!ELEMENT FlightNumber (#PCDATA)>
@@ -12,10 +12,10 @@
     <!ELEMENT AirlineCountry (#PCDATA) >
     <!ELEMENT Phone (#PCDATA) >
     <!ELEMENT Website (#PCDATA) >
-        <!ATTLIST Website onlineCheckIN (да | не) #REQUIRED>
+        <!ATTLIST Website OnlineCheckIN (да | не) #REQUIRED>
         <!ATTLIST Website HotelBooking (да | не) #REQUIRED>
         <!ATTLIST Website CarRental (да | не) #REQUIRED>
-<!ELEMENT Aircraft (Description, FirstDate, Length, Height, Wingspan, Diameter, Speed, Manufacturer)>
+<!ELEMENT Aircraft (AircraftID, Description, FirstDate, Length, Height, Wingspan, Diameter, Speed, Manufacturer)>
   <!ATTLIST Aircraft Type CDATA #REQUIRED >
   <!ATTLIST Aircraft Capacity CDATA #REQUIRED >
   <!ATTLIST Aircraft Engines CDATA #REQUIRED >
@@ -29,29 +29,21 @@
   <!ELEMENT Speed (#PCDATA)>
   <!ELEMENT Manufacturer (#PCDATA)>
 <!ELEMENT AirportInfo (AirportID, Code, AirportPhone, Address)>
-  <!ATTLIST AirportInfo Airport (излитане | кацане) #REQUIRED >
+  <!ATTLIST AirportInfo Airport (излитане | кацане | прекачване) #REQUIRED >
   <!ELEMENT AirportID (#PCDATA) >
   <!ELEMENT Code (#PCDATA) >
   <!ELEMENT AirportPhone (#PCDATA) >
-    <!ATTLIST AirportPhone type (стационарен | мобилен) #REQUIRED >
-    <!ATTLIST AirportPhone fax (да | не) #REQUIRED >
+    <!ATTLIST AirportPhone Type (стационарен | мобилен) #REQUIRED >
+    <!ATTLIST AirportPhone Fax (да | не) #REQUIRED >
   <!ELEMENT Address (City, Street, Postalcode, AirportWebsite) > 
     <!ELEMENT City (#PCDATA) >
     <!ELEMENT Street (#PCDATA) >
     <!ELEMENT Postalcode (#PCDATA) >
     <!ELEMENT AirportWebsite (#PCDATA) >
-<!ELEMENT Aircrew (AircrewID, Member)>
-    <!ELEMENT AircrewID (#PCDATA)>
-    <!ELEMENT Member (MemberName, Country, Age, Years)>
-        <!ATTLIST Member Position (пилот | стюардеса) #REQUIRED >
+<!ELEMENT Member (MemberID, MemberName, Country, Age, Years)>
+        <!ATTLIST Member Position (пилот | стюард) #REQUIRED >
+        <!ELEMENT MemberID (#PCDATA) >
         <!ELEMENT MemberName (#PCDATA) >
         <!ELEMENT Country (#PCDATA) >
         <!ELEMENT Age (#PCDATA) >
         <!ELEMENT Years (#PCDATA) >    
-<!ELEMENT TouristInfo (InfoID, Town, Timezone, Currency, AverageTemperature, CityDescription) >
-    <!ELEMENT InfoID (#PCDATA)>
-    <!ELEMENT Town (#PCDATA) >
-    <!ELEMENT Timezone (#PCDATA) >
-    <!ELEMENT Currency (#PCDATA) >
-    <!ELEMENT AverageTemperature (#PCDATA) >
-    <!ELEMENT CityDescription (#PCDATA) >

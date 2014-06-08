@@ -27,12 +27,9 @@ namespace Flights_Service
                     filesNumber++;
                     try
                     {
+
                         processor.LoadFile(file);
                         Flight flight = processor.GetFlight();
-                      //  AirportInfo airportInfo = processor.GetAirportInfo();
-                     //   Airline airline = processor.GetAirline();
-                      //  Aircraft aircraft = processor.GetAircraft();
-                      //  Member member = processor.GetMember();
                         var bss = from r in context.Flights
                                   select r.FlightID;
                         if (bss.Any(id => id == flight.FlightID))
