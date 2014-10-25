@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Flight SYSTEM "Flights.dtd">
+<Flight>
+  <FlightID>8</FlightID>
+  <Date>8.6.2014</Date>
+  <FlightNumber>A345</FlightNumber>
+  <DepTime>12:45</DepTime>
+  <ArrvTime>14:30</ArrvTime>
+  <Status>излетял</Status>
+  <GroundOp></GroundOp>
+  <Airline>
+    <AirlineID>8</AirlineID>
+    <Name>БългарияЕър</Name>
+    <AirlineCountry>България</AirlineCountry>
+    <Phone></Phone>
+    <Website OnlineCheckIN="да" HotelBooking="не" CarRental="не" />
+  </Airline>
+  <Aircraft Type="А320" Capacity="350" Engines="2">
+    <AircraftID>8</AircraftID>
+    <Description></Description>
+    <FirstDate>12.12.1996</FirstDate>
+    <Length>39.50</Length>
+    <Height>12</Height>
+    <Wingspan>8.7</Wingspan>
+    <Diameter></Diameter>
+    <Speed>996.7</Speed>
+    <Manufacturer>Холандия</Manufacturer>
+  </Aircraft>
+  <AirportInfo Airport="кацане">
+    <AirportID>15</AirportID>
+    <Code>SOF</Code>
+    <AirportPhone Type="стационарен" Fax="да">123456</AirportPhone>
+    <Address>
+      <City>София</City>
+      <Street>Христофор Колумб</Street>
+      <Postalcode>1000</Postalcode>
+      <AirportWebsite>www.sofia-airport.bg/</AirportWebsite>
+    </Address>
+  </AirportInfo>
+  <AirportInfo Airport="излитане">
+    <AirportID>16</AirportID>
+    <Code>ATL</Code>
+    <AirportPhone Type="стационарен" Fax="не">012003000</AirportPhone>
+    <Address>
+      <City>Лондон</City>
+      <Street></Street>
+      <Postalcode>123</Postalcode>
+      <AirportWebsite>www.atlanta-airport.com</AirportWebsite>
+    </Address>
+  </AirportInfo>
+  <Member Position="пилот">
+    <MemberID>14</MemberID>
+    <MemberName>Димитър Иванов</MemberName>
+    <Country>България</Country>
+    <Age>45</Age>
+    <Years>20</Years>
+  </Member>
+  <Member Position="пилот">
+    <MemberID>15</MemberID>
+    <MemberName>Петър Петров</MemberName>
+    <Country>България</Country>
+    <Age>42</Age>
+    <Years>15</Years>
+  </Member>
+</Flight>

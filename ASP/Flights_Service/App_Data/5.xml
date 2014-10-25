@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Flight SYSTEM "Flights.dtd">
+<Flight>
+  <FlightID>5</FlightID>
+  <Date>8.6.2014</Date>
+  <FlightNumber>A345</FlightNumber>
+  <DepTime>14:50</DepTime>
+  <ArrvTime>17:43</ArrvTime>
+  <Status>излетял</Status>
+  <GroundOp></GroundOp>
+  <Airline>
+    <AirlineID>5</AirlineID>
+    <Name>ИзиДжет</Name>
+    <AirlineCountry>Франция</AirlineCountry>
+    <Phone></Phone>
+    <Website OnlineCheckIN="не" HotelBooking="не" CarRental="не" />
+  </Airline>
+  <Aircraft Type="F15" Capacity="422" Engines="4">
+    <AircraftID>5</AircraftID>
+    <Description></Description>
+    <FirstDate>4.8.2001</FirstDate>
+    <Length>34.50</Length>
+    <Height>10</Height>
+    <Wingspan>9.7</Wingspan>
+    <Diameter>4</Diameter>
+    <Speed>1080.5</Speed>
+    <Manufacturer>Франция</Manufacturer>
+  </Aircraft>
+  <AirportInfo Airport="кацане">
+    <AirportID>9</AirportID>
+    <Code>SOF</Code>
+    <AirportPhone Type="стационарен" Fax="да">543434</AirportPhone>
+    <Address>
+      <City>София</City>
+      <Street>Христофор Колумб</Street>
+      <Postalcode>1000</Postalcode>
+      <AirportWebsite>www.sofia-airport.bg/</AirportWebsite>
+    </Address>
+  </AirportInfo>
+  <AirportInfo Airport="излитане">
+    <AirportID>10</AirportID>
+    <Code>FRA</Code>
+    <AirportPhone Type="стационарен" Fax="не">012003000</AirportPhone>
+    <Address>
+      <City>Париж</City>
+      <Street></Street>
+      <Postalcode>123</Postalcode>
+      <AirportWebsite>www.paris-airport.com</AirportWebsite>
+    </Address>
+  </AirportInfo>
+  <Member Position="пилот">
+    <MemberID>8</MemberID>
+    <MemberName>Даниел Георгиев</MemberName>
+    <Country>България</Country>
+    <Age>38</Age>
+    <Years>10</Years>
+  </Member>
+  <Member Position="пилот">
+    <MemberID>9</MemberID>
+    <MemberName>Филип Христов</MemberName>
+    <Country>България</Country>
+    <Age>52</Age>
+    <Years>23</Years>
+  </Member>
+</Flight>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Flight SYSTEM "Flights.dtd">
+<Flight>
+  <FlightID>25</FlightID>
+  <Date>asdasdas</Date>
+  <FlightNumber>asdasd</FlightNumber>
+  <DepTime>asdasd</DepTime>
+  <ArrvTime>asdsad</ArrvTime>
+  <Status>asdasd</Status>
+  <GroundOp>asdasd</GroundOp>
+  <Airline>
+    <AirlineID>66</AirlineID>
+    <Name>asdasd</Name>
+    <AirlineCountry>asdasd</AirlineCountry>
+    <Phone>asdasd</Phone>
+    <Website OnlineCheckIN="да" HotelBooking="не" CarRental="не" />
+  </Airline>
+  <Aircraft Type="asdas" Capacity="34" Engines="2">
+    <AircraftID>65</AircraftID>
+    <Description>asdasdasd</Description>
+    <FirstDate></FirstDate>
+    <Length></Length>
+    <Height></Height>
+    <Wingspan></Wingspan>
+    <Diameter>asdasdasd</Diameter>
+    <Speed></Speed>
+    <Manufacturer></Manufacturer>
+  </Aircraft>
+  <AirportInfo Airport="кацане">
+    <AirportID>55</AirportID>
+    <Code>sadasdas</Code>
+    <AirportPhone Type="мобилен" Fax="не"></AirportPhone>
+    <Address>
+      <City></City>
+      <Street></Street>
+      <Postalcode></Postalcode>
+      <AirportWebsite></AirportWebsite>
+    </Address>
+  </AirportInfo>
+  <AirportInfo Airport="излитане">
+    <AirportID>78</AirportID>
+    <Code>asdasd</Code>
+    <AirportPhone Type="стационарен" Fax="не"></AirportPhone>
+    <Address>
+      <City></City>
+      <Street></Street>
+      <Postalcode></Postalcode>
+      <AirportWebsite></AirportWebsite>
+    </Address>
+  </AirportInfo>
+  <Member Position="пилот">
+    <MemberID>44</MemberID>
+    <MemberName>dsadasdas</MemberName>
+    <Country></Country>
+    <Age></Age>
+    <Years></Years>
+  </Member>
+</Flight>

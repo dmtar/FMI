@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Flight SYSTEM "Flights.dtd">
+<Flight>
+  <FlightID>7</FlightID>
+  <Date>8.6.2014</Date>
+  <FlightNumber>Y654</FlightNumber>
+  <DepTime>12:45</DepTime>
+  <ArrvTime>14:30</ArrvTime>
+  <Status>излетял</Status>
+  <GroundOp></GroundOp>
+  <Airline>
+    <AirlineID>7</AirlineID>
+    <Name>Делта</Name>
+    <AirlineCountry>САЩ</AirlineCountry>
+    <Phone></Phone>
+    <Website OnlineCheckIN="да" HotelBooking="да" CarRental="не" />
+  </Airline>
+  <Aircraft Type="B747" Capacity="550" Engines="4">
+    <AircraftID>7</AircraftID>
+    <Description></Description>
+    <FirstDate>1.4.1999</FirstDate>
+    <Length>39.50</Length>
+    <Height>12</Height>
+    <Wingspan>8.7</Wingspan>
+    <Diameter></Diameter>
+    <Speed>996.7</Speed>
+    <Manufacturer>Холандия</Manufacturer>
+  </Aircraft>
+  <AirportInfo Airport="кацане">
+    <AirportID>13</AirportID>
+    <Code>SOF</Code>
+    <AirportPhone Type="стационарен" Fax="да">123456</AirportPhone>
+    <Address>
+      <City>София</City>
+      <Street>Христофор Колумб</Street>
+      <Postalcode>1000</Postalcode>
+      <AirportWebsite>www.sofia-airport.bg/</AirportWebsite>
+    </Address>
+  </AirportInfo>
+  <AirportInfo Airport="излитане">
+    <AirportID>14</AirportID>
+    <Code>ATL</Code>
+    <AirportPhone Type="стационарен" Fax="не">012003000</AirportPhone>
+    <Address>
+      <City>Амстердам</City>
+      <Street></Street>
+      <Postalcode>123</Postalcode>
+      <AirportWebsite>www.atlanta-airport.com</AirportWebsite>
+    </Address>
+  </AirportInfo>
+  <Member Position="пилот">
+    <MemberID>12</MemberID>
+    <MemberName>Иван Господинов</MemberName>
+    <Country>България</Country>
+    <Age>45</Age>
+    <Years>20</Years>
+  </Member>
+  <Member Position="стюард">
+    <MemberID>13</MemberID>
+    <MemberName>Лилия Иванова</MemberName>
+    <Country>България</Country>
+    <Age>29</Age>
+    <Years>5</Years>
+  </Member>
+</Flight>

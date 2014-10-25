@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Flight SYSTEM "Flights.dtd">
+<Flight>
+  <FlightID>4</FlightID>
+  <Date>10.6.2014</Date>
+  <FlightNumber>A345</FlightNumber>
+  <DepTime>17:43</DepTime>
+  <ArrvTime>20:00</ArrvTime>
+  <Status></Status>
+  <GroundOp></GroundOp>
+  <Airline>
+    <AirlineID>4</AirlineID>
+    <Name>УизЕър</Name>
+    <AirlineCountry>Англия</AirlineCountry>
+    <Phone></Phone>
+    <Website OnlineCheckIN="да" HotelBooking="не" CarRental="не" />
+  </Airline>
+  <Aircraft Type="А319" Capacity="350" Engines="2">
+    <AircraftID>4</AircraftID>
+    <Description></Description>
+    <FirstDate>1.3.1994</FirstDate>
+    <Length>36.20</Length>
+    <Height>11.5</Height>
+    <Wingspan>9.2</Wingspan>
+    <Diameter></Diameter>
+    <Speed>990.2</Speed>
+    <Manufacturer>САЩ</Manufacturer>
+  </Aircraft>
+  <AirportInfo Airport="кацане">
+    <AirportID>7</AirportID>
+    <Code>SOF</Code>
+    <AirportPhone Type="стационарен" Fax="да">123456</AirportPhone>
+    <Address>
+      <City>София</City>
+      <Street>Христофор Колумб</Street>
+      <Postalcode>1000</Postalcode>
+      <AirportWebsite>www.sofia-airport.bg/</AirportWebsite>
+    </Address>
+  </AirportInfo>
+  <AirportInfo Airport="излитане">
+    <AirportID>8</AirportID>
+    <Code>ATL</Code>
+    <AirportPhone Type="стационарен" Fax="не">012003000</AirportPhone>
+    <Address>
+      <City>Лондон</City>
+      <Street>Фриилейн стриит</Street>
+      <Postalcode>10050</Postalcode>
+      <AirportWebsite>www.atlanta-airport.com</AirportWebsite>
+    </Address>
+  </AirportInfo>
+  <Member Position="пилот">
+    <MemberID>6</MemberID>
+    <MemberName>Мартин Иванов</MemberName>
+    <Country>България</Country>
+    <Age>43</Age>
+    <Years>15</Years>
+  </Member>
+  <Member Position="пилот">
+    <MemberID>7</MemberID>
+    <MemberName>Никола Димитров</MemberName>
+    <Country>България</Country>
+    <Age>55</Age>
+    <Years>25</Years>
+  </Member>
+</Flight>

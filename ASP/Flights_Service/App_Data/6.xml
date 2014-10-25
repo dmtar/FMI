@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Flight SYSTEM "Flights.dtd">
+<Flight>
+  <FlightID>6</FlightID>
+  <Date>8.6.2014</Date>
+  <FlightNumber>G167</FlightNumber>
+  <DepTime>10:45</DepTime>
+  <ArrvTime>11:30</ArrvTime>
+  <Status>излетял</Status>
+  <GroundOp></GroundOp>
+  <Airline>
+    <AirlineID>6</AirlineID>
+    <Name>АърФранс</Name>
+    <AirlineCountry>Франция</AirlineCountry>
+    <Phone></Phone>
+    <Website OnlineCheckIN="да" HotelBooking="не" CarRental="не" />
+  </Airline>
+  <Aircraft Type="Т19" Capacity="350" Engines="2">
+    <AircraftID>6</AircraftID>
+    <Description></Description>
+    <FirstDate>10.5.1997</FirstDate>
+    <Length>34.80</Length>
+    <Height>8</Height>
+    <Wingspan>9.6</Wingspan>
+    <Diameter></Diameter>
+    <Speed>898.7</Speed>
+    <Manufacturer>Полша</Manufacturer>
+  </Aircraft>
+  <AirportInfo Airport="кацане">
+    <AirportID>11</AirportID>
+    <Code>SOF</Code>
+    <AirportPhone Type="стационарен" Fax="да">123456</AirportPhone>
+    <Address>
+      <City>София</City>
+      <Street>Христофор Колумб</Street>
+      <Postalcode>1000</Postalcode>
+      <AirportWebsite>www.sofia-airport.bg/</AirportWebsite>
+    </Address>
+  </AirportInfo>
+  <AirportInfo Airport="излитане">
+    <AirportID>12</AirportID>
+    <Code>MSW</Code>
+    <AirportPhone Type="стационарен" Fax="не">3456543</AirportPhone>
+    <Address>
+      <City>Москва</City>
+      <Street></Street>
+      <Postalcode>45700</Postalcode>
+      <AirportWebsite>www.moscow-airport.com</AirportWebsite>
+    </Address>
+  </AirportInfo>
+  <Member Position="пилот">
+    <MemberID>10</MemberID>
+    <MemberName>Росен Трифонов</MemberName>
+    <Country>България</Country>
+    <Age>45</Age>
+    <Years>20</Years>
+  </Member>
+  <Member Position="пилот">
+    <MemberID>11</MemberID>
+    <MemberName>Валентин Валентинов</MemberName>
+    <Country>България</Country>
+    <Age>42</Age>
+    <Years>15</Years>
+  </Member>
+</Flight>
