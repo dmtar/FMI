@@ -1,3 +1,7 @@
+/*
+All data is generated with chance.js
+Taka e look here: http://chancejs.com/
+ */
 var data = [
 	[{
 		"name": "Alvin Ramsey",
@@ -232,7 +236,8 @@ var data = [
 		"released": "1995",
 		"genres": [
 			"Tribal",
-			"Bebob"
+			"Bebob",
+			"Dance"
 		],
 		"description": "Hivire jiesili ocuuppaz fupajkil ni ob we fuhrehiva hohkuz kukaus ubo aci hesu de."
 	}, {
@@ -256,7 +261,7 @@ var data = [
 		],
 		"description": "Us ipamo bih enruvin kala uz sap puuw zabe id wus laj."
 	}, {
-		"name": "Eula Mills",
+		"name": "Emilie Mills",
 		"artist": "Vernon Jenkins",
 		"released": "2013",
 		"genres": [
@@ -274,6 +279,7 @@ var data = [
 			"Folk",
 			"Acoustic",
 			"Acapella",
+			"Dance",
 			"Celtic"
 		],
 		"description": "Azamutif toizri optijjo zimsuvag irziuci dihow iwitfo uhbe lisug hinvum egulivsa ohegeosu."
@@ -331,7 +337,7 @@ var data = [
 		],
 		"description": "Giec uhe lu govseg co rehujim pucupfid bovlu taluazu rocgob feih vum kurtacaz talmikde."
 	}, {
-		"name": "Dean Salazar",
+		"name": "Dean emilie Salazar",
 		"artist": "Vernon Jenkins",
 		"released": "2012",
 		"genres": [
@@ -437,7 +443,8 @@ var musiciansDb = db.getSiblingDB('musicians');
 musiciansDb.artists.insert(data[0]);
 musiciansDb.albums.insert(data[1]);
 
-musiciansDb.albums.update({
+print("Updating all albums with artist 'Amy Stanley', adding genre 'Pop-Additional' to the genres array and new property favorite with value 'true'");
+var updatedRecords = musiciansDb.albums.update({
 	artist: "Amy Stanley"
 }, {
 	$set: {
@@ -450,11 +457,72 @@ musiciansDb.albums.update({
 	multi: true
 });
 
-var artistsSubset = musiciansDb.artists.find({
-	founded: {
-		$gte: "2001",
-		$lte: "2011"
+print("Updated records");
+printjson(updatedRecords);
+
+/*
+Because this is still open: https://jira.mongodb.org/browse/SERVER-90
+We need a property wih the normalized string. 
+Aggregate makes something like a view in the meaning of rational dbs. 
+ */
+print("Searching for artists founded between 2001 and 2011, sorting in desc order by name");
+var artistsSubset = musiciansDb.artists.aggregate([{
+	$project: {
+		name: 1,
+		founded: 1,
+		insensitive: {
+			$toLower: "$name"
+		}
 	}
-}).sort({
-	name: -1
+}, {
+	$match: {
+		founded: {
+			$gte: "2001",
+			$lte: "2011"
+		}
+	}
+}, {
+	$sort: {
+		insensitive: -1
+	}
+}]);
+
+printjson(artistsSubset.toArray());
+print("Searching albums containing genre 'Dance' and artist 'Alvin Ramsey'");
+
+var danceAlbums = musiciansDb.albums.find({
+	genres: {
+		$in: ["Dance"]
+	},
+	artist: "Alvin Ramsey"
+}).count();
+
+print("Albums found: " + danceAlbums);
+print("Deleting all albums which contains 'emilie' in their names...");
+
+var beforeDelete = musiciansDb.albums.find({
+	name: /.*emilie.*/i
+}, {
+	name: 1
 });
+
+print("Before deletion");
+printjson(beforeDelete.toArray());
+
+var deletedAlbums = musiciansDb.albums.remove({
+	name: /.*emilie.*/i
+});
+
+print("Deleted albums: " + deletedAlbums.nRemoved);
+
+var afterDelete = musiciansDb.albums.find({
+	name: /.*emilie.*/i
+}, {
+	name: 1
+});
+
+if (afterDelete.count()) {
+	print("WARNING! Deletion didn't pass successfully! Not all documents are deleted");
+} else {
+	print("Deletion passed successfully!");
+}
