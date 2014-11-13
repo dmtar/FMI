@@ -5,9 +5,13 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongo = require('mongodb');
+var mongoose = require('mongoose');
 
 var routes = require('./routes');
 var users = require('./routes/user');
+
+mongoose.connect('mongodb://localhost/musicians');
 
 var app = express();
 
