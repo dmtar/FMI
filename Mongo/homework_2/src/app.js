@@ -1,17 +1,14 @@
 var express = require('express');
-var http = require('http');
 var path = require('path');
-var favicon = require('static-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
-var routes = require('./routes');
-var users = require('./routes/user');
+mongoose.connect('mongodb://localhost/musicians', function(err) {
+    if (err) throw err;
+});
 
-mongoose.connect('mongodb://localhost/musicians');
+var routes = require('./routes');
 
 var app = express();
 
@@ -19,16 +16,13 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(favicon());
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
 
 app.get('/', routes.index);
-app.get('/users', users.list);
+
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
