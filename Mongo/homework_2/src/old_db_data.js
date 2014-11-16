@@ -1,5 +1,5 @@
-module.exports = function() {
-	return [
+module.exports = function(db) {
+	var dbData = [
 		[{
 			"name": "Alvin Ramsey",
 			"founded": "1981",
@@ -434,4 +434,30 @@ module.exports = function() {
 			"description": "Ne efuwojupo pal cecgo kah aglasar dawe nuducaz koswe avhutlac gud jivwe ber muvi fi buken."
 		}]
 	];
-}
+
+	var artistsCollection = db.collection('artists');
+	var albumsCollection = db.collection('albums');
+
+	var artists = dbData[0];
+	var albums = dbData[1];
+
+	artists.forEach(function(artistInfo) {
+		artistsCollection.insert(artistInfo, function(err, doc) {
+			if (err) {
+				console.error(err);
+			}
+		});
+	});
+
+	albums.forEach(function(albumInfo) {
+		albumsCollection.insert(albumInfo, function(err, doc) {
+			if (err) {
+				console.error(err);
+			}
+		});
+	});
+
+	setTimeout(function(){
+		return true;
+	},2000);
+};
